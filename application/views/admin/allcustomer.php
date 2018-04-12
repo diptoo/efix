@@ -1,6 +1,6 @@
 <table class="table table-hover">
             <thead>
-            <tr>
+            <tr class="table-secondary">
                 <th scope="col">Customer Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Address</th>
