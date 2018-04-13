@@ -14,3 +14,5 @@
 <a class="btn btn-primary" href="<?php echo base_url(); ?>posts/create">Create Post</a>
 <a class="btn btn-primary" href="<?php echo base_url(); ?>posts">See All Post</a>
 <a class="btn btn-primary" href="<?php echo base_url(); ?>users/mypost">My Post</a>
+<a class="btn btn-primary" href="<?php echo base_url(); ?>users/accepted_proposal_technician">Accepted Proposal(Technician)</a>
+<a class="btn btn-primary" href="<?php echo base_url(); ?>users/accepted_proposal_repairshop">Accepted Proposal(Repairshop)</a>

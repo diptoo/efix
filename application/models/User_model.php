@@ -96,7 +96,7 @@ class User_model extends CI_Model
     //exit();
     if($type_id==2)
     {
-      $query=$this->db->query("SELECT users.type_id,cost,title,shop_name,days,proposed_id,pr.id from proposal as pr
+      $query=$this->db->query("SELECT pst.id as pst_id,users.type_id,cost,title,shop_name,days,proposed_id,pr.id from proposal as pr
       INNER JOIN posts as pst
       on pr.post_id=pst.id
       INNER JOIN repairshop as rep
@@ -105,10 +105,11 @@ class User_model extends CI_Model
       on users.id = pr.proposed_id
       WHERE pst.cust_id=$temp
       and pst.id = $id
+      and pr.status=1
       ");
     }
     elseif ($type_id==3) {
-      $query=$this->db->query("SELECT users.type_id,tech.username,cost,title,username,expert_at,days,proposed_id,pr.id from proposal as pr
+      $query=$this->db->query("SELECT pst.id as pst_id,users.type_id,tech.username,cost,title,username,expert_at,days,proposed_id,pr.id from proposal as pr
       INNER JOIN posts as pst
       on pr.post_id=pst.id
       INNER JOIN technician as tech
@@ -132,13 +133,51 @@ class User_model extends CI_Model
     on rep.shop_id = pr.proposed_id
     "); */
   //  echo "dhukse";
-  //print_r($query->result_array());
+//  print_r($query->result_array());
   //exit();
     return $query->result_array();
     //exit();
   }
+
+//called from users controller  accepted_proposal_technician method
+  public function accepted_proposal_technician()
+  {
+    $temp = $this->session->userdata('user_id');
+    $query=$this->db->query("SELECT cost,days,username
+      from proposal INNER JOIN posts
+      on posts.id=proposal.post_id
+      INNER JOIN technician
+      on proposal.proposed_id = technician.technician_id
+      where posts.cust_id = $temp
+      and proposal.status = 2
+    ");
+    //print_r($query->result_array());
+    //exit();
+    return $query->result_array();
+  }
+//called from users controller  accepted_proposal_technician method
+  public function accepted_proposal_repairshop()
+  {
+    $temp = $this->session->userdata('user_id');
+    $query=$this->db->query("SELECT cost,days,shop_name
+      from proposal INNER JOIN posts
+      on posts.id=proposal.post_id
+      INNER JOIN repairshop as rep
+      on proposal.proposed_id = rep.shop_id
+      where posts.cust_id = $temp
+      and proposal.status = 2
+    ");
+    //print_r($query->result_array());
+    //exit();
+    return $query->result_array();
+  }
+
+
   //status 2 means accept
-  public function change_proposal_status($st1,$st2,$st3)
+  //$st1= set status number
+  //$st2=rep/tech id
+  //$st3=proposal id
+  public function change_proposal_status($st1,$st2,$st3,$pst_id)
   {
   //  echo $st1;
     //echo $st2;
@@ -146,9 +185,29 @@ class User_model extends CI_Model
     WHERE proposed_id = $st2
     and id=$st3
    ");
+   $query = $this->db->query("UPDATE proposal set status=3
+    WHERE post_id=$pst_id
+    and status=1
+   ");
+
    return;
    //print_r($query);
   }
+//called from users controller proposal_status method
+public function proposal_status()
+{
+  $temp = $this->session->userdata('user_id');
+  $query=$this->db->query("SELECT title,status,cost
+    from proposal as prop
+    INNER JOIN posts as pst
+    on prop.post_id = pst.id
+    where prop.proposed_id = $temp
+  ");
+  //print_r($query->result_array());
+//  exit();
+return $query->result_array();
+}
+
   //Pending repair shop registered
   //called from users controller rep_pending method
   public function pending_rep()

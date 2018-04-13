@@ -127,12 +127,11 @@ class Users extends CI_Controller{
             );
 
             $this->session->set_userdata($user_data); // ?????
+
               $this->load->view('templates/header');
               $this->load->view('users/admin');
-            //  exit();
               $this->load->view('templates/footer');
             }
-
 
             elseif($result_array[0]['status']==2) {
               # code...
@@ -207,22 +206,50 @@ class Users extends CI_Controller{
         redirect('users/login');
     }
 
-//View proposal- called from views/users/customer
+//View proposal- called from views/posts/view
     public function view_proposal($type_id,$id) //$id=post_id
     {
-      echo $type_id;
-      echo $id;
-    //  exit();
-
-      $data['posts'] = $this->user_model->get_proposal($type_id,$id);// returns all post array
-
-    //  print_r($data['posts']);
-    //  exit();
+      $data['posts'] = $this->user_model->get_proposal($type_id,$id);// returns all post array of proposal
+      print_r($data['posts']);
+      //exit();
       $this->load->view('templates/header');
       $this->load->view('users/viewproposal',$data);
       $this->load->view('templates/footer');
-
     }
+
+    // proposal 1 means pending 2 means accept 3 means reject
+    public function change_proposal_status($st1,$st2,$st3,$pst_id)
+    {
+        $this->user_model->change_proposal_status($st1,$st2,$st3,$pst_id);
+        echo "dhukse";
+        $this->session->set_flashdata('proposal_accept', 'You have accepted a proposal');
+        redirect("users/mypost");
+    }
+// called from views/users/customer
+    public function accepted_proposal_technician()
+    {
+      $data['posts']=$this->user_model->accepted_proposal_technician();
+      $this->load->view('templates/header');
+      $this->load->view('proposal/accepted_proposal_technician',$data);
+      $this->load->view('templates/footer');
+    }
+// called from views/users/customer
+  public function accepted_proposal_repairshop()
+  {
+    $data['posts']=$this->user_model->accepted_proposal_repairshop();
+    $this->load->view('templates/header');
+    $this->load->view('proposal/accepted_proposal_repairshop',$data);
+    $this->load->view('templates/footer');
+  }
+  // called from views/users/customer
+
+  public function proposal_status()
+  {
+    $data['posts']=$this->user_model->proposal_status();
+    $this->load->view('templates/header');
+    $this->load->view('proposal/proposal_status',$data);
+    $this->load->view('templates/footer');
+  }
 
   public function mypost()
   {
@@ -231,17 +258,7 @@ class Users extends CI_Controller{
     $this->load->view('posts/mypost', $data);
     $this->load->view('templates/footer');
   }
-  // proposal 1 means pending 2 means accept 3 means reject
-  public function change_proposal_status($st1,$st2,$st3)
-  {
-  //  echo $st1;
-    //echo $st2;
-    //exit();
-      $this->user_model->change_proposal_status($st1,$st2,$st3);
-      echo "dhukse";
-    //  redirect("users/view_proposal/0/0");
-    exit();
-  }
+
   //called from views/users/admin
   public function rep_pending()
   {

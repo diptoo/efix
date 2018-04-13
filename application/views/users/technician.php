@@ -9,5 +9,5 @@
 <h2><?= $post[0]['technician_id'] ?></h2>
 
 <a class="btn btn-primary" href="<?php echo base_url(); ?>posts">See All Post</a>
-
+<a class="btn btn-primary" href="<?php echo base_url(); ?>users/proposal_status">Proposal Status</a>
 <a class="btn btn-primary" href="<?php echo base_url(); ?>users/logout">Logout</a>

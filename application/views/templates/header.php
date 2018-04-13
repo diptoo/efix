@@ -84,3 +84,6 @@
 <?php if ($this->session->flashdata('account_blocked')): ?>
 <?php echo '<p class="alert alert-danger">' . $this->session->flashdata('account_blocked') . '</p>'; ?>
 <?php endif; ?>
+<?php if ($this->session->flashdata('proposal_accept')): ?>
+<?php echo '<p class="alert alert-success">' . $this->session->flashdata('proposal_accept') . '</p>'; ?>
+<?php endif; ?>
