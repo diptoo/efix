@@ -210,6 +210,10 @@ class Users extends CI_Controller{
 //View proposal- called from views/users/customer
     public function view_proposal($type_id,$id) //$id=post_id
     {
+      echo $type_id;
+      echo $id;
+    //  exit();
+
       $data['posts'] = $this->user_model->get_proposal($type_id,$id);// returns all post array
 
     //  print_r($data['posts']);
@@ -234,6 +238,9 @@ class Users extends CI_Controller{
     //echo $st2;
     //exit();
       $this->user_model->change_proposal_status($st1,$st2,$st3);
+      echo "dhukse";
+    //  redirect("users/view_proposal/0/0");
+    exit();
   }
   //called from views/users/admin
   public function rep_pending()

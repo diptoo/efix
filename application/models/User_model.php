@@ -137,15 +137,17 @@ class User_model extends CI_Model
     return $query->result_array();
     //exit();
   }
+  //status 2 means accept
   public function change_proposal_status($st1,$st2,$st3)
   {
-    echo $st1;
-    echo $st2;
+  //  echo $st1;
+    //echo $st2;
    $query = $this->db->query("UPDATE proposal set status=$st1
     WHERE proposed_id = $st2
     and id=$st3
    ");
-   print_r($query);
+   return;
+   //print_r($query);
   }
   //Pending repair shop registered
   //called from users controller rep_pending method
