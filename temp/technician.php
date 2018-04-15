@@ -8,8 +8,6 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
-
 
   <title> Tecnician Account Page</title>
 
@@ -47,10 +45,10 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav justify-content-end d-flex flex-fill">
           <li class="nav-item active">
-            <a class="nav-link GugiFont" href="#"><?php echo $post[0]['username']; ?>&nbsp;&nbsp;&nbsp;<span class="sr-only">(current)</span></a>
+            <a class="nav-link GugiFont" href="#">Sabbir-Ul-Alam&nbsp;&nbsp;&nbsp;<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="navbar-brand GugiFont" href="#">5<img src="http://localhost/efix/assets/images/noti2.png" width="30" height="30" alt=""></a>
+            <a class="navbar-brand GugiFont" href="#">5<img src="noti1.png" width="30" height="30" alt=""></a>
           </li>
           <li class="nav-item">
             <a class="nav-link GugiFont" href="<?php echo base_url(); ?>users/logout">Sign Out</a>
@@ -70,11 +68,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link GugiFont" href="<?php echo base_url(); ?>posts">See All Posts</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link GugiFont" href="<?php echo base_url(); ?>users/proposal_status">Proposal Status</a>
+                <a class="nav-link GugiFont" href="#">See All Posts</a>
               </li>
 
             </ul>
@@ -89,9 +83,10 @@
           <div class="col-sm-3">
             <br>
             <div class="card" style="width: 18rem;">
-              <img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post[0]['profilepic']; ?>" alt="Card image cap">
+              <img class="card-img-top img img-fluid" src="technician.jpg" alt="Card image cap">
               <div class="card-body" align="center">
-                <h5 class="card-title"><?php echo $post[0]['username']; ?></h5>
+                <h5 class="card-title">Sabbir-Ul-Alam</h5>
+                <a href="#" class="btn btn-primary">Edit Profile</a>
               </div>
             </div>
           </div>
@@ -106,8 +101,8 @@
                     <input type="email" class="form-control" id="inputEmail4" placeholder="Email" value="<?= $post[0]['email'] ?>">
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="inputPassword4">Contact No</label>
-                    <input type="text" class="form-control" id="inputPassword4" placeholder="contact" value="0<?= $post[0]['contact'] ?>">
+                    <label for="inputPassword4">Password</label>
+                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
                   </div>
                 </div>
                 <div class="form-group">
@@ -140,12 +135,9 @@
                   </div>
                   <div class="form-group col-md-2">
                     <label for="age">Age</label>
-                    <input type="text" class="form-control" id="inputAge" value="<?= $post[0]['age'] ?>">
+                    <input type="number" class="form-control" id="inputAge" value="<?= $post[0]['age'] ?>">
                   </div>
-                  <div class="form-group col-md-4">
-                    <label for="dateOfBirth">Birth Date</label>
-                    <input type="text" class="form-control" id="bday" value="<?= $post[0]['dob'] ?>">
-                  </div>
+
                 </div>
               </fieldset>
             </form>
@@ -165,3 +157,18 @@
   </body>
 
 </html>
+
+
+<h2>Technician</h2>
+<h2><?= $post[0]['id'] ?></h2>
+<h2><?= $post[0]['email'] ?></h2>
+<h2><?= $post[0]['expert_at'] ?></h2>
+<h2><?= $post[0]['nationality'] ?></h2>
+<h2><?= $post[0]['age'] ?></h2>
+<h2><?= $post[0]['gender'] ?></h2>
+<h2><?= $post[0]['type_id'] ?></h2>
+<h2><?= $post[0]['technician_id'] ?></h2>
+
+<a class="btn btn-primary" href="<?php echo base_url(); ?>posts">See All Post</a>
+<a class="btn btn-primary" href="<?php echo base_url(); ?>users/proposal_status">Proposal Status</a>
+<a class="btn btn-primary" href="<?php echo base_url(); ?>users/logout">Logout</a>

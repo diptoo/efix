@@ -12,6 +12,7 @@ class Users extends CI_Controller{
     // Status 1 register accepted by admin ,status 2 means register pending
     //customer  always status 1 , status 4 means customer is blocked
     public function register($iidd){
+
         $data['title'] = 'Sign Up';
 
        // $iid="2";
@@ -22,7 +23,7 @@ class Users extends CI_Controller{
         $this->form_validation->set_rules('password', 'Password');
         $this->form_validation->set_rules('password2', 'Confirm Password');
         if($this->form_validation->run() === FALSE){
-            echo "form error";
+            //echo "form error";
             $this->load->view('templates/header');
             $this->load->view('users/register', $data);
             $this->load->view('templates/footer');
@@ -31,13 +32,49 @@ class Users extends CI_Controller{
            // $enc_password = md5($this->input->post('password'));
             //echo "dhukse";
             //die($iid);
+            // Upload Image
+
+            $temp = $this->input->post('dob');
+            // echo @date('Y-m-d');
+             $temp2=@date('Y-m-d');
+             echo $temp2;
+
+            echo '\n';
+            echo $temp;
+
+
+  echo '\n';
+            $age = $temp2-$temp;
+        $config['upload_path'] = './assets/images/profilepic/';
+      //  print_r($config['upload_path']);
+      //  exit();
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '2048';
+        $config['max_width'] = '2000';
+        $config['max_height'] = '2000';
+        $this->load->library('upload', $config);
+        //$temp = $this->upload->data();
+        //print_r($temp);
+        if(!$this->upload->do_upload('userfile')){
+          //echo "dhukse";
+          //exit();
+          $errors = array('error' => $this->upload->display_errors());
+          $post_image = 'noimage.jpg';
+        } else {
+          $data = array('upload_data' => $this->upload->data());
+          $post_image = $_FILES['userfile']['name'];
+        }
             //common for all users
             $data = array(
                 'email' => $this->input->post('email'),
                 'address' => $this->input->post('address'),
                 'password' => md5($this->input->post('password')),
-                'zipcode' => $this->input->post('zipcode')
+                'zipcode' => $this->input->post('zipcode'),
+                'contact'=>$this->input->post('contact'),
+                'profilepic'=>$post_image
             );
+
+
             $data1=array();
             $data2=array();
             $data3=array();
@@ -50,32 +87,41 @@ class Users extends CI_Controller{
                 $data2['category']=$this->input->post('category');
                 $data['type_id']=2;
                 $data['status']=2;
+                $this->session->set_flashdata('user_registered', 'You are now registered.Wait for admin approval');
+
             }
             //technician
             elseif ($iidd==3)
             {
                 $data3['expert_at']=$this->input->post('expert_at');
                 $data3['nationality']=$this->input->post('nationality');
-                $data3['age']=$this->input->post('age');
+                $temp_dob = $this->input->post('dob');
+                $data3['dob']=date('Y-m-d', strtotime($temp_dob));
+                $data3['age']=$age;
+                echo $data3['dob'];
+                //exit();
                 $data3['gender']=$this->input->post('gender');
                 $data3['username']=$this->input->post('username');
                 $data['type_id']=3;
                 $data['status']=2;
+                $this->session->set_flashdata('user_registered', 'You are now registered.Wait for admin approval');
             }
             elseif ($iidd==1)
             {
                 $data['type_id']=1;
                 $data['status']=1;
                 $data1['username']=$this->input->post('username');
-                $data1['dob']=$this->input->post('dob');
+                $temp_dob = $this->input->post('dob');
+                $data1['dob']=date('Y-m-d', strtotime($temp_dob));
+                echo $data1['dob'];
+                echo "dhukse";
+                //exit();
                 $data1['nationality']=$this->input->post('nationality');
-                $data1['age']=$this->input->post('age');
+                $data1['age']=$age;
                 $data1['gender']=$this->input->post('gender');
-
             }
             $this->user_model->register($data,$data1,$data2,$data3);
             // Set message
-            $this->session->set_flashdata('user_registered', 'You are now registered.Wait for admin approval');
             redirect('users/login');
         }
     }
@@ -163,7 +209,7 @@ class Users extends CI_Controller{
                 $data['post']=$result_array;
                 if($result_array[0]['type_id']==2)
                 {
-                    $this->load->view('templates/header');
+                //    $this->load->view('templates/header');
                     $this->load->view('users/repairshop',$data);
                     $this->load->view('templates/footer');
 
@@ -171,14 +217,14 @@ class Users extends CI_Controller{
                 //Technician
                 elseif ($result_array[0]['type_id']==3)
                 {
-                    $this->load->view('templates/header');
+                  //  $this->load->view('templates/header');
                     $this->load->view('users/technician',$data);
                     $this->load->view('templates/footer');
                 }
                 //Customer
                 elseif ($result_array[0]['type_id']==1)
                 {
-                    $this->load->view('templates/header');
+                    //$this->load->view('templates/header');
                     $this->load->view('users/customer',$data);
                     $this->load->view('templates/footer');
                 }

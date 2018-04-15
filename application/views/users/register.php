@@ -1,7 +1,8 @@
 <!-- called from users controller register method -->
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('users/register/' . $iid); ?> <!--will go to users controller , register method -->
+
+<?php echo form_open_multipart('users/register/' . $iid); ?> <!--will go to users controller , register method -->
 
 <h1 class="text-center"><?= $iid; ?></h1>
 <div class="form-group">
@@ -22,6 +23,10 @@
     <input type="text" class="form-control" name="zipcode" placeholder="Zipcode">
 </div>
 <div class="form-group">
+    <label>Contact No</label>
+    <input type="text" class="form-control" name="contact" placeholder="Contact">
+</div>
+<div class="form-group">
     <label>Address</label>
     <input type="text" class="form-control" name="address" placeholder="Address">
 </div>
@@ -37,20 +42,16 @@
         <input type="text" class="form-control" name="nationality" placeholder="Nationality">
     </div>
     <div class="form-group">
-        <label>Age</label>
-        <input type="text" class="form-control" name="age" placeholder="Age">
-    </div>
-
-    <div class="form-group">
         <label>Gender</label>
         <input type="text" class="form-control" name="gender" placeholder="Gender">
     </div>
 
 <?php endif; ?>
-<?php if ($iid == 1): ?>
+<?php if ($iid == 1 || $iid == 3): ?>
+
     <div class="form-group">
         <label>Date Of Birth</label>
-        <input type="text" class="form-control" name="dob" placeholder="Date Of Birth">
+        <input type="text" class="form-control" id="datepicker" name="dob" placeholder="Date Of Birth">
     </div>
 <?php endif; ?>
 <!--Shop related data -->
@@ -75,7 +76,15 @@
         <input type="text" class="form-control" name="expert_at" placeholder="Expert at">
     </div>
 <?php endif; ?>
-
+<div class="form-group">
+	  <label>Upload Image</label>
+	  <input type="file" name="userfile" size="20">
+</div>
 
 <button type="submit" class="btn btn-primary btn-block">Submit</button>
 <?php echo form_close(); ?>
+<script type="text/javascript">
+    $(".dob").datetimepicker({
+        format: "dd MM yyyy - hh:ii"
+    });
+</script>

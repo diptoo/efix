@@ -42,7 +42,7 @@ class User_model extends CI_Model
         //exit();
         //repair shop
         if ($result_array[0]['type_id'] == 2) {
-            $result = $this->db->query("SELECT id,type_id,shop_name,category,floor,email,shop_id,status from users
+            $result = $this->db->query("SELECT id,type_id,shop_name,contact,profilepic,address,zipcode,category,floor,email,shop_id,status from users
         INNER JOIN repairshop as rep on users.id =rep.shop_id
         WHERE users.email='$email' AND
         users.password='$password'
@@ -52,7 +52,7 @@ class User_model extends CI_Model
             //exit();
         } //technician
         elseif ($result_array[0]['type_id'] == 3) {
-            $result = $this->db->query("SELECT id,type_id,expert_at,technician_id,age,gender,nationality,email,status from users
+            $result = $this->db->query("SELECT id,type_id,expert_at,dob,username,contact,profilepic,address,zipcode,technician_id,age,gender,nationality,email,status from users
         INNER JOIN technician as tec on users.id =tec.technician_id
         WHERE users.email='$email' AND
         users.password='$password'
@@ -65,7 +65,7 @@ class User_model extends CI_Model
         elseif ($result_array[0]['type_id'] == 1) {
             //echo "1 a dhukse";
             //exit();
-            $result = $this->db->query("SELECT id,type_id,username,age,gender,nationality,cust_id,email,status from users
+            $result = $this->db->query("SELECT id,type_id,profilepic,address,dob,zipcode,contact,username,age,gender,nationality,cust_id,email,status from users
         INNER JOIN customer as cust on users.id =cust.cust_id
         WHERE users.email='$email' AND
         users.password='$password'
