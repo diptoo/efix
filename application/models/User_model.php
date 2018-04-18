@@ -259,9 +259,10 @@ return $query->result_array();
   }
 
 // Check username exists
-    public function check_username_exists($username)
+    public function check_email_exists($email)
     {
-        $query = $this->db->get_where('users', array('username' => $username));//first username is column of database
+      //table name is users
+        $query = $this->db->get_where('users', array('email' => $email));//first email is column of database
         if (empty($query->row_array())) {
             return true;
         } else {

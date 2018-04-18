@@ -426,7 +426,6 @@
 
 
   <!-- Shop Sign-Up Modal -->
-<?php echo form_open('users/register/2'); ?>
   <div class="container">
     <div class="row">
 
@@ -440,7 +439,7 @@
         </button>
             </div>
             <div class="modal-body">
-              <form class="border-class">
+              <?php echo form_open('users/register/2'); ?>
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="inputEmail4">Email</label>
@@ -478,23 +477,24 @@
                       <input type="text" class="form-control" name="zipcodelo" id="inputZip2">
                     </div>
                   </div>
-              </form>
+                  <div class="modal-footer">
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck2">
+                      <label class="form-check-label" for="exampleCheck1">I accept the terms and conditions of the website</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+            <?php echo form_close(); ?>
             </div>
-            <div class="modal-footer">
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                <label class="form-check-label" for="exampleCheck1">I accept the terms and conditions of the website</label>
-              </div>
-              <button type="button" class="btn btn-primary">Confirm</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+
           </div>
         </div>
       </div>
     </div>
 
   </div>
-<?php echo form_close(); ?>
+
 
   <!-- Technician Sign-Up Modal -->
 

@@ -11,6 +11,8 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+  <link rel="stylesheet" href="http://localhost/efix/assets/css/bootstrap.min.css">
+
 
   <title>User Account Page</title>
 

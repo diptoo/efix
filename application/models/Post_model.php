@@ -62,7 +62,7 @@ class Post_model extends CI_Model
 
     public function insert_proposal($id)
     {
-      print_r($this->input->post('pay'));
+   // print_r($this->input->post('pay'));
     //  exit();
       $data =array(
         'cost'=>$this->input->post('pay'),

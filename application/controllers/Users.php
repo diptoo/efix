@@ -13,15 +13,18 @@ class Users extends CI_Controller{
     //customer  always status 1 , status 4 means customer is blocked
     public function register($iidd){
 
+
+
         $data['title'] = 'Sign Up';
 
        // $iid="2";
         $data['iid']=$iidd;
         //die($iid);
         $this->form_validation->set_rules('username', 'Username');
-        $this->form_validation->set_rules('email', 'Email','required');
-        $this->form_validation->set_rules('password', 'Password');
-        $this->form_validation->set_rules('password2', 'Confirm Password');
+        $this->form_validation->set_rules('email', 'Email','required|callback_check_email_exists');
+        $this->form_validation->set_rules('password', 'Password','required|min_length[4]|callback_is_password_strong');
+        $this->form_validation->set_rules('confirm_pass', 'Confirm Password', 'required|matches[password]');
+        $this->form_validation->set_message('is_password_strong', 'Password is not strong');
         if($this->form_validation->run() === FALSE){
             //echo "form error";
             $this->load->view('templates/header');
@@ -33,17 +36,20 @@ class Users extends CI_Controller{
             //echo "dhukse";
             //die($iid);
             // Upload Image
+            //$email = $this->input->post('email');
+          //  echo $email;
+          //  exit();
 
             $temp = $this->input->post('dob');
             // echo @date('Y-m-d');
              $temp2=@date('Y-m-d');
-             echo $temp2;
+          //   echo $temp2;
 
-            echo '\n';
-            echo $temp;
+          //  echo '\n';
+          //  echo $temp;
 
 
-  echo '\n';
+//  echo '\n';
             $age = $temp2-$temp;
         $config['upload_path'] = './assets/images/profilepic/';
       //  print_r($config['upload_path']);
@@ -94,12 +100,15 @@ class Users extends CI_Controller{
             elseif ($iidd==3)
             {
                 $data3['expert_at']=$this->input->post('expert_at');
+              //  print_r($data3['expert_at']);
+                //echo "dhukse";
+                //exit();
                 $data3['nationality']=$this->input->post('nationality');
                 $temp_dob = $this->input->post('dob');
                 $data3['dob']=date('Y-m-d', strtotime($temp_dob));
                 $data3['age']=$age;
-                echo $data3['dob'];
-                //exit();
+                //echo $data3['dob'];
+
                 $data3['gender']=$this->input->post('gender');
                 $data3['username']=$this->input->post('username');
                 $data['type_id']=3;
@@ -113,8 +122,8 @@ class Users extends CI_Controller{
                 $data1['username']=$this->input->post('username');
                 $temp_dob = $this->input->post('dob');
                 $data1['dob']=date('Y-m-d', strtotime($temp_dob));
-                echo $data1['dob'];
-                echo "dhukse";
+            //    echo $data1['dob'];
+              //  echo "dhukse";
                 //exit();
                 $data1['nationality']=$this->input->post('nationality');
                 $data1['age']=$age;
@@ -146,6 +155,7 @@ class Users extends CI_Controller{
         $data['title'] = 'Sign In';
         $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
+
         if($this->form_validation->run() === FALSE){
             $this->load->view('templates/header');
             $this->load->view('users/login', $data);
@@ -336,13 +346,23 @@ public function customer_block($status,$cust_id)
   $this->user_model->cust_block($status,$cust_id);
   redirect('users/show_all_customer');
 }
-    // Check if username exists
-    public function check_username_exists($username){
-        $this->form_validation->set_message('check_username_exists', 'That username is taken. Please choose a different one');
-        if($this->user_model->check_username_exists($username)){
+    // Check if email exists
+    public function check_email_exists($email){
+        $this->form_validation->set_message('check_email_exists', 'That email is taken. Please choose a different one');
+        if($this->user_model->check_email_exists($email)){
             return true;
         } else {
             return false;
         }
+    }
+
+    public function is_password_strong($password)
+    {
+       // echo $password;
+//regular expression
+        if (preg_match('#[0-9]#', $password) && preg_match('#[a-zA-Z]#', $password)) {
+            return TRUE;
+        }
+        return FALSE;
     }
 }
