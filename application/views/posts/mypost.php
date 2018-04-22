@@ -1,35 +1,40 @@
-</<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <h1>Latest Posts</h1>
-    <style>
 
-        .post-date{
-            background:#f4f4f4;
-            padding:4px;
-            margin:3px 0;
-            display:block;
-        }
-    </style>
-</head>
 
-<!-- retrieve data sent from posts class index method -->
-<body>
- <?php foreach($posts as $post) : ?>
-   <?php if($this->session->userdata('user_id')==$post['cust_id']): ?>
 
- 	<h3><?php echo $post['title']; ?></h3>
-    <small class="post-date">Posted on: <?php echo $post['created_at']; ?></small><br>
- 		<?php echo $post['body']; ?>
- 		<br><br>
- 		<p><a class="btn btn-primary" href="<?php echo site_url('/posts/'.$post['slug']); ?>">Read More</a></p>
-<?php endif; ?>
- <?php endforeach; ?>
+<div class="col-sm-10">
+        <div class="row">
+          <?php foreach($posts as $post) : ?>
+            <?php if($this->session->userdata('user_id')==$post['cust_id']): ?>
 
-</body>
-</html>
+          <div class="col-sm-1">
+
+          </div>
+          <div class="col-sm-10">
+            <form class="border-class">
+              <fieldset disabled>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="inputdatetime"></label>
+                    <input type="text" class="form-control" id="date1" placeholder="" value="<?php echo $post['created_at']; ?>">
+                  </div>
+
+                </div>
+
+                <h6>Posted By: Quazi Shahrukh</h6>
+                <h6>Title: <?php echo $post['title']; ?></h6>
+                <p><?php echo $post['body'];?></p>
+
+
+
+              </fieldset>
+              <a class="btn btn-dark" href="<?php echo site_url('/posts/'.$post['slug']); ?>">Read More</a>
+
+            </form>
+          </div>
+          <div class="col-sm-1">
+
+          </div>
+        <?php endif; ?>
+          <?php endforeach; ?>
+        </div>
+      </div>

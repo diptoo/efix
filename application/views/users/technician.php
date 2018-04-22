@@ -1,92 +1,3 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
-  <link rel="stylesheet" href="http://localhost/efix/assets/css/bootstrap.min.css">
-
-
-
-  <title> Tecnician Account Page</title>
-
-  <style>
-    .GugiFont {
-      font-family: 'Gugi', cursive;
-      font-weight: bold;
-    }
-
-    .navbar_border {
-      border: 2px solid #00FFFF;
-      background-color: #fff;
-    }
-
-    .img {
-      border-radius: 50%;
-    }
-
-    .border-class {
-      border: black thin solid;
-      margin: 3px;
-      padding: 10px;
-    }
-  </style>
-
-</head>
-
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top navbar_border">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-      <a class="navbar-brand GugiFont" align="center" href="#">&nbsp;&nbsp;&nbsp;E-fix</a>
-
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav justify-content-end d-flex flex-fill">
-          <li class="nav-item active">
-            <a class="nav-link GugiFont" href="#"><?php echo $post[0]['username']; ?>&nbsp;&nbsp;&nbsp;<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="navbar-brand GugiFont" href="#">5<img src="http://localhost/efix/assets/images/noti2.png" width="30" height="30" alt=""></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link GugiFont" href="<?php echo base_url(); ?>users/logout">Sign Out</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-
-    <div class="container-fluid">
-      <div class="row">
-        <nav class="col-sm-2 navbar-expand-lg d-none d-md-block sidebar-sticky bg-light sidebar navbar_border">
-          <div class="navbar-collapse sidebar-sticky">
-            <ul class="nav navbar-collapse flex-column">
-              <li class="nav-item active">
-                <a class="nav-link GugiFont" href="#">My Account<span class="sr-only">(current)</span></a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link GugiFont" href="<?php echo base_url(); ?>posts">See All Posts</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link GugiFont" href="<?php echo base_url(); ?>users/proposal_status">Proposal Status</a>
-              </li>
-
-            </ul>
-
-
-          </div>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        </nav>
-
-
 
           <div class="col-sm-3">
             <br>
@@ -163,7 +74,7 @@
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-      <script src="js/bootstrap.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
   </body>
 
 </html>

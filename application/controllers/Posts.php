@@ -19,9 +19,9 @@ class Posts extends CI_Controller
         // $data['title'] = ucfirst($page);
         $data['title'] = 'Latest posts';
         $data['posts'] = $this->post_model->get_posts();// returns all post array
-        $this->load->view('templates/header');
+        $this->load->view('templates/navbar');
         $this->load->view('posts/index', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/navbar_footer');
     }
 
     public function view($slug = NULL)
@@ -32,9 +32,9 @@ class Posts extends CI_Controller
         }
         //$data['title'] = $data['post']['title'];
 
-        $this->load->view('templates/header');
+        $this->load->view('templates/navbar');
         $this->load->view('posts/view', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/navbar_footer');
     }
 
       public function mypost()
@@ -57,11 +57,13 @@ class Posts extends CI_Controller
         $data['title'] = 'Create post';
         $this->form_validation->set_rules('title', 'Title', 'required');
         $this->form_validation->set_rules('body', 'Body', 'required');
+        $this->form_validation->set_rules('product_name', 'Product Name', 'required');
+        $this->form_validation->set_rules('product_model', 'Product Model', 'required');
 
         if ($this->form_validation->run() === FALSE) {
-            $this->load->view('templates/header');
+            $this->load->view('templates/navbar_customer_header');
             $this->load->view('posts/create', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('templates/navbar_customer_footer');
         } else {
             $this->post_model->create_post();
             redirect('posts');
@@ -76,7 +78,7 @@ class Posts extends CI_Controller
             show_404();
         }
         $data['title'] = 'Edit post';
-        $this->load->view('templates/header');
+        $this->load->view('templates/accepted_proposal_customer_navbar_header');
         $this->load->view('posts/edit', $data);
         $this->load->view('templates/footer');
     }
@@ -101,7 +103,7 @@ class Posts extends CI_Controller
         if (empty($data['post'])) {
             show_404();
         }
-        $this->load->view('templates/header');
+        $this->load->view('templates/accepted_proposal_customer_navbar_header');
         $this->load->view('posts/proposal',$data);
         $this->load->view('templates/footer');
     }

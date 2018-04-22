@@ -36,7 +36,19 @@ class Post_model extends CI_Model
             'body' => $this->input->post('body'),
             'cust_id' => $this->session->userdata('user_id')
         );
-        return $this->db->insert('posts', $data);
+        $this->db->insert('posts', $data);
+        $post_id = $this->db->insert_id();
+        $data_product = array(
+          'product_name'=>$this->input->post('product_name'),
+          'product_model'=>$this->input->post('product_model'),
+          'post_id'=>$post_id,
+          'product_key'=>$this->input->post('product_key')
+        );
+        //print_r($data_product);
+      //  exit();
+      $this->db->insert('product', $data_product);
+
+      return;
     }
 
 //called from posts controller delete method

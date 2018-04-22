@@ -184,7 +184,7 @@ class Users extends CI_Controller{
 
             $this->session->set_userdata($user_data); // ?????
 
-              $this->load->view('templates/header');
+              $this->load->view('templates/accepted_proposal_customer_navbar_header');
               $this->load->view('users/admin');
               $this->load->view('templates/footer');
             }
@@ -219,24 +219,25 @@ class Users extends CI_Controller{
                 $data['post']=$result_array;
                 if($result_array[0]['type_id']==2)
                 {
-                //    $this->load->view('templates/header');
+                   $this->load->view('templates/navbar');
                     $this->load->view('users/repairshop',$data);
-                    $this->load->view('templates/footer');
+                    $this->load->view('templates/navbar_footer');
 
                 }
                 //Technician
                 elseif ($result_array[0]['type_id']==3)
                 {
                   //  $this->load->view('templates/header');
+                  $this->load->view('templates/navbar');
                     $this->load->view('users/technician',$data);
-                    $this->load->view('templates/footer');
+                    $this->load->view('templates/navbar_footer');
                 }
                 //Customer
                 elseif ($result_array[0]['type_id']==1)
                 {
-                    //$this->load->view('templates/header');
+                    $this->load->view('templates/navbar_customer_header');
                     $this->load->view('users/customer',$data);
-                    $this->load->view('templates/footer');
+                    $this->load->view('templates/navbar_customer_footer');
                 }
                 //redirect('posts');
             }
@@ -266,9 +267,9 @@ class Users extends CI_Controller{
     public function view_proposal($type_id,$id) //$id=post_id
     {
       $data['posts'] = $this->user_model->get_proposal($type_id,$id);// returns all post array of proposal
-      print_r($data['posts']);
+    //  print_r($data['posts']);
       //exit();
-      $this->load->view('templates/header');
+      $this->load->view('templates/accepted_proposal_customer_navbar_header');
       $this->load->view('users/viewproposal',$data);
       $this->load->view('templates/footer');
     }
@@ -285,24 +286,24 @@ class Users extends CI_Controller{
     public function accepted_proposal_technician()
     {
       $data['posts']=$this->user_model->accepted_proposal_technician();
-      $this->load->view('templates/header');
+      $this->load->view('templates/accepted_proposal_customer_navbar_header');
       $this->load->view('proposal/accepted_proposal_technician',$data);
-      $this->load->view('templates/footer');
+      $this->load->view('templates/navbar_customer_footer');
     }
 // called from views/users/customer
   public function accepted_proposal_repairshop()
   {
     $data['posts']=$this->user_model->accepted_proposal_repairshop();
-    $this->load->view('templates/header');
+    $this->load->view('templates/accepted_proposal_customer_navbar_header');
     $this->load->view('proposal/accepted_proposal_repairshop',$data);
-    $this->load->view('templates/footer');
+    $this->load->view('templates/navbar_customer_footer');
   }
   // called from views/users/customer
 
   public function proposal_status()
   {
     $data['posts']=$this->user_model->proposal_status();
-    $this->load->view('templates/header');
+    $this->load->view('templates/accepted_proposal_customer_navbar_header');
     $this->load->view('proposal/proposal_status',$data);
     $this->load->view('templates/footer');
   }
@@ -310,16 +311,16 @@ class Users extends CI_Controller{
   public function mypost()
   {
     $data['posts'] = $this->post_model->get_posts();
-    $this->load->view('templates/header');
+    $this->load->view('templates/navbar_customer_header');
     $this->load->view('posts/mypost', $data);
-    $this->load->view('templates/footer');
+    $this->load->view('templates/navbar_customer_footer');
   }
 
   //called from views/users/admin
   public function rep_pending()
   {
     $data['posts'] = $this->user_model->pending_rep();
-    $this->load->view('templates/header');
+    $this->load->view('templates/accepted_proposal_customer_navbar_header');
     $this->load->view('admin/pendingrep', $data);
     $this->load->view('templates/footer');
   }
@@ -328,7 +329,7 @@ class Users extends CI_Controller{
   public function tech_pending()
   {
     $data['posts'] = $this->user_model->pending_tech();
-    $this->load->view('templates/header');
+    $this->load->view('templates/accepted_proposal_customer_navbar_header');
     $this->load->view('admin/pendingtech', $data);
     $this->load->view('templates/footer');
   }
@@ -336,7 +337,7 @@ class Users extends CI_Controller{
   public function show_all_customer()
   {
     $data['posts'] = $this->user_model->all_customer_ret();
-    $this->load->view('templates/header');
+    $this->load->view('templates/accepted_proposal_customer_navbar_header');
     $this->load->view('admin/allcustomer', $data);
     $this->load->view('templates/footer');
   }

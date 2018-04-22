@@ -16,6 +16,13 @@
   }
 </script>
   </head>
+  <style>
+  .border-class3{
+    border: grey solid;
+    margin: 3px;
+    padding: 10px;
+  }
+  </style>
   <body>
 
 
@@ -26,20 +33,28 @@
 <?php echo $this->session->userdata('user_id') ?>
 
 
-<?php echo form_open('posts/push_proposal/'.$post['id']); ?>
-<div class="form-group">
-    <label>Cost</label>
-    <input id="amount" type="text" class="form-control" name="cost" onkeyup="computePayment()" placeholder="Cost">
-</div>
-<div class="form-group">
-    <label>Days</label>
-    <input type="text" class="form-control" name="days" placeholder="Days"/>
-    <input type="hidden" name="pay" id="pay"/>
-</div>
-<h3 id = "interest"></h3>
+<div class="row">
+  <div class="col-sm-4">
 
-<h2 id = "payment"></h2>
-<button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  </div>
+  <div class="col-sm-4 border-class3">
+    <?php echo form_open('posts/push_proposal/'.$post['id']); ?>
+    <div class="form-group">
+        <label>Cost</label>
+        <input id="amount" type="text" class="form-control" name="cost" onkeyup="computePayment()" placeholder="Cost">
+    </div>
+    <div class="form-group">
+        <label>Days</label>
+        <input type="text" class="form-control" name="days" placeholder="Days"/>
+        <input type="hidden" name="pay" id="pay"/>
+    </div>
+    <h5 id = "interest"></h5>
+
+    <h5 id = "payment"></h5>
+    <button type="submit" class="btn btn-dark">Submit</button>
+    </form>
+  </div>
+</div>
+
   </body>
   </html>

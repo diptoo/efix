@@ -82,11 +82,35 @@
     </div>
     <div class="form-group">
         <label>Floor</label>
+<!--
         <input type="text" class="form-control" name="floor" placeholder="Floor">
+      -->
+        <div class="col-md-5">
+                <select name="floor">
+                    <option value="1" <?php echo set_select('floor', 1); ?> >1</option>
+                    <option value="2" <?php echo set_select('floor', 2); ?> >2</option>
+                    <option value="3" <?php echo set_select('floor', 3); ?> >3</option>
+                    <option value="4" <?php echo set_select('floor', 4); ?> >4</option>
+                    <option value="5" <?php echo set_select('floor', 5); ?> >5</option>
+                    <option value="6" <?php echo set_select('floor', 6); ?> >6</option>
+                    <option value="7" <?php echo set_select('floor', 7); ?> >7</option>
+                    <option value="8" <?php echo set_select('floor', 8); ?> >8</option>
+                </select>
+        </div>
     </div>
     <div class="form-group">
         <label>Category</label>
+  <!--
         <input type="text" class="form-control" name="category" placeholder="Category">
+      -->
+        <div class="col-md-5">
+                <select name="category">
+                    <option value="Mobile" <?php echo set_select('category', 'Mobile'); ?> >Mobile</option>
+                    <option value="Laptop" <?php echo set_select('category', 'Laptop'); ?> >Laptop</option>
+                    <option value="Desktop" <?php echo set_select('category', 'Desktop'); ?> >Desktop</option>
+                </select>
+
+            </div>
     </div>
 <?php endif; ?>
 
