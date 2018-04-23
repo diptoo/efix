@@ -36,8 +36,8 @@ class User_model extends CI_Model
         $result_temp = $this->db->get('users');
 
         $result_array = $result_temp->result_array();
-      //  print_r($result_array);
-        //exit();
+      // print_r($result_array);
+      //  exit();
        // print_r($result_array[0]['type_id']);
         //exit();
         //repair shop

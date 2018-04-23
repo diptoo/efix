@@ -23,44 +23,46 @@ $(function() {
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="<?php echo base_url(); ?>">Navbar</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="<?php echo base_url(); ?>">eFix</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
             aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
         <span class="navbar-toggler-icon"></span>
     </button>
-
+<!--
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="<?php echo base_url(); ?>">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="<?php //echo base_url(); ?>">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(); ?>posts">Blog</a>
+                <a class="nav-link" href="<?php// echo base_url(); ?>posts">Blog</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Pricing</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(); ?>about">About</a>
+                <a class="nav-link" href="<?php //echo base_url(); ?>about">About</a>
             </li>
         </ul>
-        <?php if (!$this->session->userdata('logged_in')): ?>
+        <?php //if (!$this->session->userdata('logged_in')): ?>
+          <!--
             <ul class="nav navbar-nav navbar-right">
-                <a class="nav-link" href="<?php echo base_url(); ?>users/login">Login</a>
+                <a class="nav-link" href="<?php //echo base_url(); ?>users/login">Login</a>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <a class="nav-link" href="<?php echo base_url(); ?>users/register/1">Register Customer</a>
+                <a class="nav-link" href="<?php //echo base_url(); ?>users/register/1">Register Customer</a>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <a class="nav-link" href="<?php echo base_url(); ?>users/register/2">Register Shop</a>
+                <a class="nav-link" href="<?php //echo base_url(); ?>users/register/2">Register Shop</a>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <a class="nav-link" href="<?php echo base_url(); ?>users/register/3">Register Technician</a>
+                <a class="nav-link" href="<?php //echo base_url(); ?>users/register/3">Register Technician</a>
             </ul>
-        <?php endif; ?>
-
-        <?php if ($this->session->userdata('logged_in')): ?>
+        <?php //endif; ?>
+ -->
+        <?php //if ($this->session->userdata('logged_in')): ?>
+          <!--
             <ul class="nav navbar-nav navbar-right">
                 <a class="nav-link" href="<?php echo base_url(); ?>posts/create">Create Post</a>
             </ul>
@@ -68,7 +70,7 @@ $(function() {
                 <a class="nav-link" href="<?php echo base_url(); ?>users/logout">Logout</a>
             </ul>
 
-        <?php endif; ?>
+        <?php //endif; ?>
 
         <!--
         <form class="form-inline my-2 my-lg-0">
@@ -77,6 +79,7 @@ $(function() {
         </form>
         -->
     </div>
+
 </nav>
 <div class="container">
     <!-- Flash messages -->

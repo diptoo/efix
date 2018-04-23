@@ -99,7 +99,7 @@
           <a class="nav-link GugiFont" href="#">&nbsp;&nbsp;&nbsp;<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="navbar-brand GugiFont" href="#">5<img src="http://localhost/efix/assets/images/noti2.png" width="30" height="30" alt=""></a>
+          <a class="navbar-brand GugiFont" href="#">0<img src="http://localhost/efix/assets/images/noti3.png" width="30" height="30" alt=""></a>
         </li>
         <li class="nav-item">
           <a class="nav-link GugiFont" href="<?php echo base_url(); ?>users/logout">Sign Out</a>

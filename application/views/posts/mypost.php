@@ -20,7 +20,7 @@
 
                 </div>
 
-                <h6>Posted By: Quazi Shahrukh</h6>
+                <h6>Posted By: <?php echo $post['username'];?></h6>
                 <h6>Title: <?php echo $post['title']; ?></h6>
                 <p><?php echo $post['body'];?></p>
 

@@ -70,15 +70,15 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-    <a class="navbar-brand GugiFont" align="center" href="#">&nbsp;&nbsp;&nbsp;E-fix</a>
+    <a class="navbar-brand GugiFont" align="center" href="<?php echo base_url();?>users/myprofile">&nbsp;&nbsp;&nbsp;E-fix</a>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav justify-content-end d-flex flex-fill">
         <li class="nav-item active">
-          <a class="nav-link GugiFont" href="#">&nbsp;&nbsp;&nbsp;<span class="sr-only">(current)</span></a>
+          <a class="nav-link GugiFont" href="<?php echo base_url();?>users/myprofile"><?php echo $this->session->userdata('email') ?>&nbsp;&nbsp;&nbsp;<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="navbar-brand GugiFont" href="#">5<img src="http://localhost/efix/assets/images/noti2.png" width="30" height="30" alt=""></a>
+          <a class="navbar-brand GugiFont" href="#">0<img src="http://localhost/efix/assets/images/noti3.png" width="30" height="30" alt=""></a>
         </li>
         <li class="nav-item">
           <a class="nav-link GugiFont" href="<?php echo base_url(); ?>users/logout">Sign Out</a>
@@ -86,17 +86,24 @@
       </ul>
     </div>
   </nav>
+
+  <div class="container">
+    <?php if ($this->session->flashdata('user_loggedin')): ?>
+    <?php echo '<p class="alert alert-success">' . $this->session->flashdata('user_loggedin') . '</p>'; ?>
+    <?php endif; ?>
+
+  </div>
   <div class="container-fluid">
     <div class="row">
       <nav class="col-sm-2 navbar-expand-lg d-none d-md-block sidebar-sticky bg-light sidebar navbar_border">
         <div class="navbar-collapse sidebar-sticky">
           <ul class="nav navbar-collapse flex-column">
             <li class="nav-item active">
-              <a class="nav-link GugiFont" href="#">My Account<span class="sr-only">(current)</span></a>
+              <a class="nav-link GugiFont" href="<?php echo base_url();?>users/myprofile">My Account<span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link GugiFont" href="<?php echo base_url(); ?>posts">See All Posts</a>
+              <a class="nav-link GugiFont" href="<?php echo base_url(); ?>posts/index/2">See All Posts</a>
             </li>
 
             <li class="nav-item">

@@ -27,10 +27,6 @@
 
 
 
-<?php echo $post['id'] ?><br>
-
-<?php echo $this->session->userdata('type_id') ?> <br>
-<?php echo $this->session->userdata('user_id') ?>
 
 
 <div class="row">

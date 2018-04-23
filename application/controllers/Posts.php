@@ -14,14 +14,25 @@ class Posts extends CI_Controller
     }
 
 // For all post retrieve
-    public function index()
+    public function index($iid)
     {
         // $data['title'] = ucfirst($page);
         $data['title'] = 'Latest posts';
         $data['posts'] = $this->post_model->get_posts();// returns all post array
-        $this->load->view('templates/navbar');
-        $this->load->view('posts/index', $data);
-        $this->load->view('templates/navbar_footer');
+        if($iid == 1)
+        {
+          $this->load->view('templates/navbar_customer_header');
+          $this->load->view('posts/index', $data);
+          $this->load->view('templates/navbar_footer');
+        }
+        else
+        {
+
+          $this->load->view('templates/navbar');
+          $this->load->view('posts/index', $data);
+          $this->load->view('templates/navbar_footer');
+        }
+
     }
 
     public function view($slug = NULL)
@@ -31,16 +42,26 @@ class Posts extends CI_Controller
             show_404();
         }
         //$data['title'] = $data['post']['title'];
+    $type = $this->session->userdata('type_id');
+    if($type == 1)
+    {
+      $this->load->view('templates/navbar_customer_header');
+      $this->load->view('posts/view', $data);
+      $this->load->view('templates/navbar_footer');
+    }
+    else
+    {
+      $this->load->view('templates/navbar');
+      $this->load->view('posts/view', $data);
+      $this->load->view('templates/navbar_footer');
+    }
 
-        $this->load->view('templates/navbar');
-        $this->load->view('posts/view', $data);
-        $this->load->view('templates/navbar_footer');
     }
 
       public function mypost()
       {
         $data['posts'] = $this->post_model->get_posts();
-        $this->load->view('templates/header');
+        $this->load->view('templates/navbar_customer_header');
         $this->load->view('posts/mypost', $data);
         $this->load->view('templates/footer');
 

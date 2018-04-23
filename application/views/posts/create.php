@@ -20,7 +20,7 @@
     <script type="text/javascript">
       function compute_product_key()
       {
-         alert("dhukse");
+        // alert("dhukse");
          var product_key_show = Math.floor(Math.random() * 1000000);
          product_key_show = product_key_show.toString();
          document.getElementById('pro_key').innerHTML = "Product Key = "+product_key_show;

@@ -6,10 +6,15 @@ class Post_model extends CI_Model
     {
         if ($slug === FALSE) {
 
-            $this->db->order_by('id', 'DESC');
+          //  $this->db->order_by('id', 'DESC');
 
-            $query = $this->db->get('posts');
-
+        //    $query = $this->db->get('posts');
+            $query = $this->db->query("SELECT title,body,username,created_at,slug,posts.cust_id from posts INNER JOIN customer
+            where posts.cust_id = customer.cust_id order by posts.id DESC
+            ");
+            //$temp = $query->result_array();
+          //  print_r($temp);
+            //exit();
             return $query->result_array();
         }
 

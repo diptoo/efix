@@ -4,7 +4,6 @@
 
 <?php echo form_open_multipart('users/register/' . $iid); ?> <!--will go to users controller , register method -->
 
-<h1 class="text-center"><?= $iid; ?></h1>
 <div class="form-group">
     <label>Email</label>
 <!--

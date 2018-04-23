@@ -12,6 +12,19 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$(function() {
+$( "#datepicker" ).datepicker({
+  changeMonth: true,
+  changeYear: true,
+  dateFormat: 'yy-mm-dd',
+ yearRange: '1990:2018'
+
+});
+} );
+</script>
   <title>Start Page</title>
 
   <style>
@@ -99,7 +112,34 @@
     </div>
 
   </nav>
+<div class="container">
+  <!-- Flash messages -->
+  <?php if ($this->session->flashdata('user_registered')): ?>
+      <?php echo '<p class="alert alert-info">' . $this->session->flashdata('user_registered') . '</p>'; ?>
+  <?php endif; ?>
 
+  <?php if ($this->session->flashdata('login_failed')): ?>
+      <?php echo '<p class="alert alert-danger">' . $this->session->flashdata('login_failed') . '</p>'; ?>
+  <?php endif; ?>
+
+  <?php if ($this->session->flashdata('user_loggedout')): ?>
+  <?php echo '<p class="alert alert-danger">' . $this->session->flashdata('user_loggedout') . '</p>'; ?>
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('registration_pending')): ?>
+<?php echo '<p class="alert alert-danger">' . $this->session->flashdata('registration_pending') . '</p>'; ?>
+<?php endif; ?>
+<?php if ($this->session->flashdata('registration_rejected')): ?>
+<?php echo '<p class="alert alert-danger">' . $this->session->flashdata('registration_rejected') . '</p>'; ?>
+<?php endif; ?>
+<?php if ($this->session->flashdata('account_blocked')): ?>
+<?php echo '<p class="alert alert-danger">' . $this->session->flashdata('account_blocked') . '</p>'; ?>
+<?php endif; ?>
+<?php if ($this->session->flashdata('proposal_accept')): ?>
+<?php echo '<p class="alert alert-success">' . $this->session->flashdata('proposal_accept') . '</p>'; ?>
+<?php endif; ?>
+
+</div>
   <div class="row">
     <div class="col-sm-1">
 
@@ -155,7 +195,7 @@
         <button type="submit" class="btn btn-primary">Log In</button>
         <?php echo form_close(); ?>
 
-        <br><br>
+        <br>
         <button type="submit" class="btn btn-primary" data-target="#SelectSignUp" data-toggle="modal">Don't Have an account? Sign up</button>
 
     </div>
@@ -317,24 +357,24 @@
 <!--
             <button type="button" data-target="#SignUpModal1" class="btn btn-success" data-toggle="modal">User&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 -->
-            <a  data-target="#SignUpModal1" data-toggle="modal" class="btn btn-success" href="<?php echo base_url(); ?>users/register/1">Customer&nbsp</a>
+            <a   class="btn btn-success" href="<?php echo base_url(); ?>users/register/1">Customer&nbsp</a>
 
           </div>
           <div class="col-sm-4">
 <!--
             <button type="button" data-target="#SignUpModal2" class="btn btn-danger" data-toggle="modal">Shop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
           -->
-            <a  data-target="#SignUpModal2" data-toggle="modal" class="btn btn-danger" href="<?php echo base_url(); ?>users/register/2">Shop&nbsp</a>
+            <a  class="btn btn-danger" href="<?php echo base_url(); ?>users/register/2">Shop&nbsp</a>
 
           </div>
           <div class="col-sm-4">
             <!--
             <button type="button" href="<?php echo base_url(); ?>users/register/3"  data-target="#SignUpModal3" class="btn btn-warning" data-toggle="modal">Technician</button>
 -->
-            <a  data-target="#SignUpModal3" data-toggle="modal" class="btn btn-warning" href="<?php echo base_url(); ?>users/register/3">Technician</a>
+            <a  class="btn btn-warning" href="<?php echo base_url(); ?>users/register/3">Technician</a>
           </div>
         </div>
-      </div>lo
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
@@ -342,7 +382,7 @@
   </div>
 </div>
 
-  <!-- User Sign-Up Modal -->
+  <!-- Customer Sign-Up Modal -->
 
   <div class="container">
     <div class="row">
@@ -351,72 +391,90 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">User Sign-Up</h5>
+              <h5 class="modal-title">Customer Sign-Up</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
             </div>
             <div class="modal-body">
-              <form class="border-class">
+              <?php echo form_open_multipart('users/register/1'); ?>
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+                    <label for="email">Email</label>
+                    <?php echo form_input(['name'=>'email','placeholder'=>'Enter Email','class'=>'form-control','value'=>set_value('email')]); ?>
+                    <div class="col-md-6">
+                          <?php echo form_error('email', '<div class="text-danger">', '</div>'); ?>
+                    </div>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Password">
+                    <div class="col-md-6">
+                          <?php echo form_error('password', '<div class="text-danger">', '</div>'); ?>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputUsername">Username</label>
-                  <input type="text" class="form-control" id="inputUsername1" placeholder="qshahrukh41">
-                </div>
-                <div class="form-group">
-                  <label for="inputAddress">Address</label>
-                  <input type="text" class="form-control" id="inputAddress1" placeholder="1234 Main St">
-                </div>
 
+                  <div class="form-group col-md-6">
+                      <label for="password">Confirm Password</label>
+                      <input type="password" class="form-control" name="confirm_pass" placeholder="Confirm Password">
+
+                      <div class="col-md-6">
+                            <?php echo form_error('confirm_pass', '<div class="text-danger">', '</div>'); ?>
+                      </div>
+                  </div>
+
+                </div>
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control" name="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input type="text" class="form-control" name="address" placeholder="Address">
+                </div>
+                <div class="form-group">
+                    <label>Contact No</label>
+                    <input type="text" class="form-control" name="contact" placeholder="Contact">
+                </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="nationality">Nationality</label>
-                    <select id="inputNationality1" class="form-control">
-                    <option selected>Bangladeshi</option>
-                    <option>Other</option>
-                    </select>
+                    <input type="text" class="form-control" name="nationality" placeholder="Nationality">
+
                   </div>
                   <div class="form-group col-md-4">
                     <label for="gender">Gender</label>
-                    <select id="inputGender1" class="form-control">
-        <option selected>Male</option>
-        <option>Female</option>
-      </select>
+                    <input type="radio" name="gender" value="Male" <?php echo  set_radio('gender', 'Male'); ?> />
+                    <label>Male</label>
+                    <input type="radio" name="gender" value="Female" <?php echo  set_radio('gender', 'Female'); ?> />
+                    <label>Female</label>
                   </div>
                   <div class="form-group col-md-2">
                     <label for="inputZip">ZipCode</label>
-                    <input type="text" class="form-control" id="inputZip1">
+                    <input type="text" class="form-control" name="zipcode" placeholder="Zipcode">
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-2">
-                    <label for="age">Age</label>
-                    <input type="number" class="form-control" id="inputAge1">
+                    <label>Upload Image</label>
+                    <input type="file" name="userfile" size="20">
                   </div>
-                  <div class="form-group col-md-6">
-                    <label for="dateOfBirth">BirthDate</label>
-                    <input type="date" class="form-control" id="bday1">
+                  <div class="form-group col-md-2">
+                      <label>Date Of Birth</label>
+                      <input type="text" class="form-control" id="datepicker" name="dob" placeholder="Date Of Birth">
                   </div>
                 </div>
-              </form>
+                <div class="modal-footer">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">I accept the terms and conditions of the website</label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Confirm</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                <?php echo form_close(); ?>
             </div>
-            <div class="modal-footer">
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">I accept the terms and conditions of the website</label>
-              </div>
-              <button type="button" class="btn btn-primary">Confirm</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+
           </div>
         </div>
       </div>

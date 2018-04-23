@@ -15,6 +15,7 @@ class Users extends CI_Controller{
 
 
 
+
         $data['title'] = 'Sign Up';
 
        // $iid="2";
@@ -36,9 +37,6 @@ class Users extends CI_Controller{
             //echo "dhukse";
             //die($iid);
             // Upload Image
-            //$email = $this->input->post('email');
-          //  echo $email;
-          //  exit();
 
             $temp = $this->input->post('dob');
             // echo @date('Y-m-d');
@@ -157,7 +155,7 @@ class Users extends CI_Controller{
         $this->form_validation->set_rules('password', 'Password', 'required');
 
         if($this->form_validation->run() === FALSE){
-            $this->load->view('templates/header');
+          //  $this->load->view('users/lo');
             $this->load->view('users/login', $data);
             $this->load->view('templates/footer');
         } else {
@@ -169,7 +167,7 @@ class Users extends CI_Controller{
             $password_admin =$this->input->post('password');
             if($email!="dipto_admin@gmail.com"){
             $result_array = $this->user_model->login($email, $password);
-  }
+           }
             //echo $email;
             //exit();
             if($email=="dipto_admin@gmail.com" && $password_admin=="ijkl11223344")
@@ -209,6 +207,7 @@ class Users extends CI_Controller{
                     'type_id'=>$result_array[0]['type_id'],
                     'user_id' =>$result_array[0]['id'],
                     'email' => $email,
+                    'password'=>$password,
                     'logged_in' => true
                 );
 
@@ -217,6 +216,7 @@ class Users extends CI_Controller{
                 $this->session->set_flashdata('user_loggedin', 'You are now logged in');
                 //Repair shop
                 $data['post']=$result_array;
+
                 if($result_array[0]['type_id']==2)
                 {
                    $this->load->view('templates/navbar');
@@ -250,7 +250,37 @@ class Users extends CI_Controller{
         }
     }
 
+public function myprofile()
+{
+  $email = $this->session->userdata('email');
+  $password = $this->session->userdata('password');
+  $result_array = $this->user_model->login($email, $password);
 
+  $data['post']=$result_array;
+
+  if($result_array[0]['type_id']==2)
+  {
+     $this->load->view('templates/navbar');
+      $this->load->view('users/repairshop',$data);
+      $this->load->view('templates/navbar_footer');
+
+  }
+  //Technician
+  elseif ($result_array[0]['type_id']==3)
+  {
+    //  $this->load->view('templates/header');
+    $this->load->view('templates/navbar');
+      $this->load->view('users/technician',$data);
+      $this->load->view('templates/navbar_footer');
+  }
+  //Customer
+  elseif ($result_array[0]['type_id']==1)
+  {
+      $this->load->view('templates/navbar_customer_header');
+      $this->load->view('users/customer',$data);
+      $this->load->view('templates/navbar_customer_footer');
+  }
+}
     // Log user out
     public function logout(){
         // Unset user data
