@@ -7,6 +7,7 @@ class Users extends CI_Controller{
         $this->load->model('user_model');
         $this->load->model('post_model');
     }
+
     // Register user
     //called from views/templates/header
     // Status 1 register accepted by admin ,status 2 means register pending
@@ -22,9 +23,10 @@ class Users extends CI_Controller{
         $data['iid']=$iidd;
         //die($iid);
         $this->form_validation->set_rules('username', 'Username');
-        $this->form_validation->set_rules('email', 'Email','required|callback_check_email_exists');
+        $this->form_validation->set_rules('email', 'Email','required');
         $this->form_validation->set_rules('password', 'Password','required|min_length[4]|callback_is_password_strong');
         $this->form_validation->set_rules('confirm_pass', 'Confirm Password', 'required|matches[password]');
+        $this->form_validation->set_rules('contact','Contact No','required|min_length[6]');
         $this->form_validation->set_message('is_password_strong', 'Password is not strong');
         if($this->form_validation->run() === FALSE){
             //echo "form error";
@@ -59,14 +61,14 @@ class Users extends CI_Controller{
         $this->load->library('upload', $config);
         //$temp = $this->upload->data();
         //print_r($temp);
-        if(!$this->upload->do_upload('userfile')){
+        if(!$this->upload->do_upload('userfile1')){
           //echo "dhukse";
           //exit();
           $errors = array('error' => $this->upload->display_errors());
           $post_image = 'noimage.jpg';
         } else {
           $data = array('upload_data' => $this->upload->data());
-          $post_image = $_FILES['userfile']['name'];
+          $post_image = $_FILES['userfile1']['name'];
         }
             //common for all users
             $data = array(
@@ -132,18 +134,57 @@ class Users extends CI_Controller{
             redirect('users/login');
         }
     }
+    public function send($email)
+    {
+      echo "dhukse";
+      print_r($email);
+    //  exit();
+      $config = Array(
+        'protocol'=>'smtp',
+        'smtp_host'=>'ssl://smtp.googlemail.com',
+        'smtp_port'=>465,
+        'smtp_user'=>'lm33120@gmail.com',
+        'mailtype'=>'html',
+        'charset'=>'iso-8859-1',
+        'wordwrap'=>TRUE
+      );
+      $this->load->library('email',$config);
+
+$this->email->from('lm33120@gmail.com', 'Dipto');
+$this->email->to($email);
+
+
+$this->email->subject('e-Fix registration');
+$this->email->message('Your registration has been accepted by system admin of efix. You can login now');
+$this->email->set_newline("\r\n");
+if($this->email->send())
+{
+  echo "email has been sent";
+}
+else
+{
+  echo "not send";
+}
+return;
+    }
     //register status change by admin
     public function change_register_change($status,$rep_id)
     {
 
-      $this->user_model->reg_stts_chng($status,$rep_id);
+      $data = $this->user_model->reg_stts_chng($status,$rep_id);
+      $this->send($data[0]['email']);
+
       redirect('users/rep_pending');
     }
     //technician status change by admin
 
     public function change_technician_change($status,$tech_id)
     {
-      $this->user_model->tech_stts_chng($status,$tech_id);
+    //  echo "lol";
+      $data = $this->user_model->tech_stts_chng($status,$tech_id);
+      //print_r($data[0]['email']);
+      $this->send($data[0]['email']);
+    //  exit();
       redirect('users/tech_pending');
     }
 

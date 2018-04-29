@@ -6,6 +6,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">Cost</th>
                 <th scope="col">Days</th>
+                <th scope="col">Definition</th>
                 <?php if($posts[0]['type_id']==2):?>
                 <th scope="col">Shop Name</th>
               <?php endif;?>
@@ -25,6 +26,7 @@
                         <td><?php echo $post['title'] ?></td>
                         <td><?php echo $post['cost'] ?></td>
                         <td><?php echo $post['days']?></td>
+                        <td><?php echo $post['definition']?></td>
                         <?php if($post['type_id']==2):?>
                           <td><?php echo $post['shop_name']?></td>
                         <?php endif;?>

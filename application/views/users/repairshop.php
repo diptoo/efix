@@ -6,7 +6,7 @@
               <img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post[0]['profilepic']; ?>" alt="Card image cap">
               <div class="card-body" align="center">
                 <h5 class="card-title"><?= $post[0]['shop_name'] ?></h5>
-
+                <h2 class="card-title" style="color:red" >Rating:</h2>
               </div>
             </div>
           </div>

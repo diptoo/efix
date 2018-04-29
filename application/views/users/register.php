@@ -32,12 +32,15 @@
 </div>
 
 <div class="form-group">
-    <label>Zipcode</label>
-    <input type="text" class="form-control" name="zipcode" placeholder="Zipcode">
+    <label>NID</label>
+    <input type="text" class="form-control" name="zipcode" placeholder="NID">
 </div>
 <div class="form-group">
     <label>Contact No</label>
     <input type="text" class="form-control" name="contact" placeholder="Contact">
+    <div class="col-md-5">
+          <?php echo form_error('contact', '<div class="text-danger">', '</div>'); ?>
+    </div>
 </div>
 <div class="form-group">
     <label>Address</label>
@@ -131,7 +134,7 @@
 <?php endif; ?>
 <div class="form-group">
 	  <label>Upload Image</label>
-	  <input type="file" name="userfile" size="20">
+	  <input type="file" name="userfile1" size="20">
 </div>
 
 <button type="submit" class="btn btn-primary btn-block">Submit</button>

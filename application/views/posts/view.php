@@ -13,6 +13,25 @@
 	<?php echo $post['body']; ?>
 </div>
 
+
+<!--  Show Image1 -->
+<div class="card" style="width: 18rem;">
+	<img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img1']; ?>" alt="Card image cap">
+</div>
+
+<!--  Show Image2 -->
+<div class="card" style="width: 18rem;">
+	<img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img2']; ?>" alt="Card image cap">
+</div>
+
+<!--  Show Image3 -->
+<div class="card" style="width: 18rem;">
+	<img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img3']; ?>" alt="Card image cap">
+</div>
+
+
+
+
 <hr>
 
 <?php if($this->session->userdata('user_id')==$post['cust_id']): ?>

@@ -10,7 +10,7 @@
      var interest = (amount * 0.15).toFixed(2);
      var payment = (+amount + +interest).toFixed(0);
      payment = payment.toString();
-     document.getElementById('interest').innerHTML= "Interest = "+interest;
+     document.getElementById('interest').innerHTML= "Service Charge = "+interest;
      document.getElementById('payment').innerHTML = "Total Cost = "+payment;
      document.getElementById('pay').value=payment;
   }
@@ -43,6 +43,10 @@
         <label>Days</label>
         <input type="text" class="form-control" name="days" placeholder="Days"/>
         <input type="hidden" name="pay" id="pay"/>
+    </div>
+    <div class="form-group">
+        <label>Problem Definition</label>
+        <input type="text" class="form-control" name="definition" placeholder="Problem Definition"/>
     </div>
     <h5 id = "interest"></h5>
 

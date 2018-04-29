@@ -128,7 +128,7 @@
                 </button>
                 <div class="dropdown-menu">
                   <a class="dropdown-item GugiFont" href="<?php echo base_url();?>posts/create">Create Post</a>
-                  <a class="dropdown-item GugiFont" href="<?php echo base_url(); ?>posts/1">See All Posts</a>
+                  <a class="dropdown-item GugiFont" href="<?php echo base_url(); ?>posts/index/1">See All Posts</a>
                   <a class="dropdown-item GugiFont" href="<?php echo base_url(); ?>users/mypost">My Posts</a>
                 </div>
               </div>

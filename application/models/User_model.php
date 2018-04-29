@@ -96,7 +96,7 @@ class User_model extends CI_Model
     //exit();
     if($type_id==2)
     {
-      $query=$this->db->query("SELECT pst.id as pst_id,users.type_id,cost,title,shop_name,days,proposed_id,pr.id from proposal as pr
+      $query=$this->db->query("SELECT pst.id as pst_id,users.type_id,cost,definition,title,shop_name,days,proposed_id,pr.id from proposal as pr
       INNER JOIN posts as pst
       on pr.post_id=pst.id
       INNER JOIN repairshop as rep
@@ -109,7 +109,7 @@ class User_model extends CI_Model
       ");
     }
     elseif ($type_id==3) {
-      $query=$this->db->query("SELECT pst.id as pst_id,users.type_id,tech.username,cost,title,username,expert_at,days,proposed_id,pr.id from proposal as pr
+      $query=$this->db->query("SELECT pst.id as pst_id,users.type_id,definition,tech.username,cost,title,username,expert_at,days,proposed_id,pr.id from proposal as pr
       INNER JOIN posts as pst
       on pr.post_id=pst.id
       INNER JOIN technician as tech
@@ -234,12 +234,22 @@ return $query->result_array();
   //status change accept or reject
  public function reg_stts_chng($st,$rep_id)
   {
-    return $this->db->query("UPDATE users set status=$st where id=$rep_id");
+    $query = $this->db->query("SELECT users.email from users where id = $rep_id");
+    //print_r($query->result_array());
+  //  exit();
+     $this->db->query("UPDATE users set status=$st where id=$rep_id");
+     return $query->result_array();
+
   }
 //called from users controller  change_technician_change method
   public function tech_stts_chng($st,$tech_id)
   {
-    return $this->db->query("UPDATE users set status=$st where id=$tech_id");
+    $query = $this->db->query("SELECT users.email from users where id = $tech_id");
+    //print_r($query->result_array());
+    //exit();
+    $this->db->query("UPDATE users set status=$st where id=$tech_id");
+    return $query->result_array();
+
   }
   //users controller show_all_customer method
   public function all_customer_ret()
@@ -268,6 +278,11 @@ return $query->result_array();
         } else {
             return false;
         }
+    }
+
+    public function get_email()
+    {
+
     }
 
 

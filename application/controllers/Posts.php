@@ -81,13 +81,16 @@ class Posts extends CI_Controller
         $this->form_validation->set_rules('product_name', 'Product Name', 'required');
         $this->form_validation->set_rules('product_model', 'Product Model', 'required');
 
+
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('templates/navbar_customer_header');
             $this->load->view('posts/create', $data);
             $this->load->view('templates/navbar_customer_footer');
         } else {
+          
+
             $this->post_model->create_post();
-            redirect('posts');
+            redirect('posts/index/1');
         }
     }
 
@@ -108,14 +111,14 @@ class Posts extends CI_Controller
     public function update($id)
     {
         $this->post_model->update_post($id);
-        redirect('posts');
+        redirect('posts/index/1');
     }
 
     // called from views/posts/view
     public function delete($id)
     {
         $this->post_model->delete_post($id);
-        redirect('posts');
+        redirect('posts/index/1');
     }
 
     public function proposal($slug)
@@ -132,6 +135,6 @@ class Posts extends CI_Controller
     public function push_proposal($id)
     {
       $this->post_model->insert_proposal($id);
-      redirect('posts');
+      redirect('posts/index/2');
     }
 }

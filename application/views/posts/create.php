@@ -2,7 +2,7 @@
 .border-class2 {
   border: 2px solid #47494c;
 
-  height: 500px;
+  height: 650px;
 }
 </style>
 <div class="col-sm-2">
@@ -35,7 +35,7 @@
 <?php echo validation_errors(); ?> <!--Form validation kono error hole ekhane show korbe -->
 
 
-<?php echo form_open('posts/create'); ?>
+<?php echo form_open_multipart('posts/create'); ?>
   <div class="form-group">
     <br>
     <label>Title</label>
@@ -55,8 +55,18 @@
     <input type="hidden" name="product_key" id="product_key"/>
   </div>
   <h5 id = "pro_key"></h5>
-
-
+  <div class="form-group">
+  	  <label>Upload Image</label>
+  	  <input type="file" name="userfile4" size="20">
+  </div>
+  <div class="form-group">
+  	  <label>Upload Image</label>
+  	  <input type="file" name="userfile2" size="20">
+  </div>
+  <div class="form-group">
+  	  <label>Upload Image</label>
+  	  <input type="file" name="userfile3" size="20">
+  </div>
   <div class="float-right"><button type="submit" class="btn btn-dark pull-right">Submit</button> </div>
 </form>
 

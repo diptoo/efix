@@ -33,13 +33,54 @@ class Post_model extends CI_Model
     {
 
 // title "sixth post" hole sixth-post kore fele, type is varchar ,no gap is allowed
+//post image
+$config['upload_path'] = './assets/images/profilepic/';
+$config['allowed_types'] = 'gif|jpg|png';
+$config['max_size'] = '2048';
+$config['max_width'] = '2000';
+$config['max_height'] = '2000';
+$this->load->library('upload', $config);
+
+
+if(!$this->upload->do_upload('userfile4')){
+  //echo "dhukse";
+  //exit();
+  $errors = array('error' => $this->upload->display_errors());
+  $post_image1 = 'noimage.jpg';
+} else {
+  $data = array('upload_data' => $this->upload->data());
+  $post_image1 = $_FILES['userfile4']['name'];
+}
+
+if(!$this->upload->do_upload('userfile2')){
+  //echo "dhukse";
+  //exit();
+  $errors = array('error' => $this->upload->display_errors());
+  $post_image2 = 'noimage.jpg';
+} else {
+  $data = array('upload_data' => $this->upload->data());
+  $post_image2 = $_FILES['userfile2']['name'];
+}
+
+if(!$this->upload->do_upload('userfile3')){
+  //echo "dhukse";
+  //exit();
+  $errors = array('error' => $this->upload->display_errors());
+  $post_image3 = 'noimage.jpg';
+} else {
+  $data = array('upload_data' => $this->upload->data());
+  $post_image3 = $_FILES['userfile3']['name'];
+}
 
         $slug = url_title($this->input->post('title'));
         $data = array(
             'title' => $this->input->post('title'),
             'slug' => $slug,
             'body' => $this->input->post('body'),
-            'cust_id' => $this->session->userdata('user_id')
+            'cust_id' => $this->session->userdata('user_id'),
+            'img1'=>$post_image1,
+            'img2'=>$post_image2,
+            'img3'=>$post_image3
         );
         $this->db->insert('posts', $data);
         $post_id = $this->db->insert_id();
@@ -85,6 +126,7 @@ class Post_model extends CI_Model
         'cost'=>$this->input->post('pay'),
 
         'days'=>$this->input->post('days'),
+        'definition'=>$this->input->post('definition'),
         'type_id'=>$this->session->userdata('type_id'),
         'proposed_id'=>$this->session->userdata('user_id'),
         'post_id'=>$id

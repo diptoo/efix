@@ -8,7 +8,7 @@
           <div class="card" style="width: 18rem;">
             <img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post[0]['profilepic']; ?>" alt="Card image cap">
 <!--
-            <img class="post-thumb" src="http://localhost/efix/assets/images/profilepic/<?php echo $post[0]['profilepic']; ?>">
+            <img class="post-thumb" src="http://localhost/efix/assets/images/profilepic/<?php //echo $post[0]['profilepic']; ?>">
 -->
             <div class="card-body" align="center">
               <h5 class="card-title"><?php echo $post[0]['username']; ?></h5>
