@@ -5,6 +5,7 @@
               <img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post[0]['profilepic']; ?>" alt="Card image cap">
               <div class="card-body" align="center">
                 <h5 class="card-title"><?php echo $post[0]['username']; ?></h5>
+                  <a class="btn btn-dark" href="<?php echo base_url();?>ratings/show_review/<?php echo $post[0]['type_id'] ?>/<?php echo $post[0]['id'] ?>">Review</a>
               </div>
             </div>
           </div>
@@ -41,7 +42,7 @@
                     <input type="text" class="form-control" id="Gender" value="<?= $post[0]['gender'] ?>">
                   </div>
                   <div class="form-group col-md-2">
-                    <label for="inputZip">ZipCode</label>
+                    <label for="inputZip">NID</label>
                     <input type="text" class="form-control" id="inputZip" value="<?= $post[0]['zipcode'] ?>">
                   </div>
                 </div>

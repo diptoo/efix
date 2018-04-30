@@ -144,6 +144,7 @@ class Users extends CI_Controller{
         'smtp_host'=>'ssl://smtp.googlemail.com',
         'smtp_port'=>465,
         'smtp_user'=>'lm33120@gmail.com',
+        'smtp_pass'=>'BFfDNM11223344',
         'mailtype'=>'html',
         'charset'=>'iso-8859-1',
         'wordwrap'=>TRUE
@@ -322,6 +323,27 @@ public function myprofile()
       $this->load->view('templates/navbar_customer_footer');
   }
 }
+  public function check_profile($userid)
+  {
+      $result_array = $this->user_model->check_profile($userid);
+      $data['post']=$result_array;
+
+      if($result_array[0]['type_id']==2)
+      {
+          $this->load->view('templates/navbar');
+          $this->load->view('users/repairshop',$data);
+          $this->load->view('templates/navbar_footer');
+
+      }
+      //Technician
+      elseif ($result_array[0]['type_id']==3)
+      {
+          //  $this->load->view('templates/header');
+          $this->load->view('templates/navbar');
+          $this->load->view('users/technician',$data);
+          $this->load->view('templates/navbar_footer');
+      }
+  }
     // Log user out
     public function logout(){
         // Unset user data

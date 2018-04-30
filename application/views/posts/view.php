@@ -30,8 +30,6 @@
 </div>
 
 
-
-
 <hr>
 
 <?php if($this->session->userdata('user_id')==$post['cust_id']): ?>
@@ -81,7 +79,7 @@
 		<?php endif; ?>
 
 	</div>
-</div>
+    </div>
 
 
 

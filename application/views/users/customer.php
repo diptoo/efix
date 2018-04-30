@@ -50,7 +50,7 @@
                   <input type="text" class="form-control" id="Gender" value="<?= $post[0]['gender'] ?>">
                 </div>
                 <div class="form-group col-md-2">
-                  <label for="inputZip">ZipCode</label>
+                  <label for="inputZip">NID</label>
                   <input type="text" class="form-control" id="inputZip" value="<?= $post[0]['zipcode'] ?>">
                 </div>
               </div>

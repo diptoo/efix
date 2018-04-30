@@ -18,9 +18,7 @@
                         <td>coming soon</td>
 
                         <td>
-                            <?php  // echo anchor("welcome/show/{$post->id}", 'View', array('class' => 'badge badge-primary')); ?>
-                            <?php   echo anchor("", 'CALL', array('class' => 'badge badge-success'));?>
-                            <?php   //echo anchor("users/change_technician_change/3/{$post['id']}", 'Reject', array('class' => 'badge badge-danger', 'onclick'=>"return confirm('Are you sure you want to reject?')"));?>
+                            <?php   echo anchor("ratings/give_review/3/{$post['technician_id']}", 'Give Rating', array('class' => 'badge badge-success'));?>
                         </td>
                     </tr>
                 <?php endforeach;?>

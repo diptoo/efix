@@ -143,7 +143,7 @@ class User_model extends CI_Model
   public function accepted_proposal_technician()
   {
     $temp = $this->session->userdata('user_id');
-    $query=$this->db->query("SELECT cost,days,username
+    $query=$this->db->query("SELECT technician.technician_id,cost,days,username
       from proposal INNER JOIN posts
       on posts.id=proposal.post_id
       INNER JOIN technician
@@ -155,11 +155,11 @@ class User_model extends CI_Model
     //exit();
     return $query->result_array();
   }
-//called from users controller  accepted_proposal_technician method
+//called from users controller  accepted_proposal_repairshop method
   public function accepted_proposal_repairshop()
   {
     $temp = $this->session->userdata('user_id');
-    $query=$this->db->query("SELECT cost,days,shop_name
+    $query=$this->db->query("SELECT cost,days,shop_name,shop_id
       from proposal INNER JOIN posts
       on posts.id=proposal.post_id
       INNER JOIN repairshop as rep
@@ -251,6 +251,35 @@ return $query->result_array();
     return $query->result_array();
 
   }
+  //check profile
+    public function check_profile($userid)
+    {
+        //type get
+        $this->db->where('id',$userid);
+        $result_temp = $this->db->get('users');
+
+        $result_array = $result_temp->result_array();
+        //repair shop
+        if ($result_array[0]['type_id'] == 2) {
+            $result = $this->db->query("SELECT id,type_id,shop_name,contact,profilepic,address,zipcode,category,floor,email,shop_id,status from users
+        INNER JOIN repairshop as rep on users.id =rep.shop_id
+        WHERE users.id= $userid 
+        ");
+            return $result->result_array();
+            //print_r($result->result_array());
+            //exit();
+        } //technician
+        elseif ($result_array[0]['type_id'] == 3) {
+            $result = $this->db->query("SELECT id,type_id,expert_at,dob,username,contact,profilepic,address,zipcode,technician_id,age,gender,nationality,email,status from users
+        INNER JOIN technician as tec on users.id =tec.technician_id
+        WHERE users.id = $userid 
+        ");
+            //print_r($result->result_array());
+            //exit();
+            return $result->result_array();
+//
+        }
+    }
   //users controller show_all_customer method
   public function all_customer_ret()
   {

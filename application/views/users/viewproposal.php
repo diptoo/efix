@@ -28,11 +28,13 @@
                         <td><?php echo $post['days']?></td>
                         <td><?php echo $post['definition']?></td>
                         <?php if($post['type_id']==2):?>
-                          <td><?php echo $post['shop_name']?></td>
+                      <!--    <td><?php //echo $post['shop_name']?></td>-->
+                            <td><a href="<?php echo base_url()?>users/check_profile/<?php echo $post['proposed_id'] ?>"><?php echo $post['shop_name']?></a></td>
                         <?php endif;?>
                         <?php if($post['type_id']==3):?>
                           <td><?php echo $post['expert_at']?></td>
-                          <td><?php echo $post['username']?></td>
+                        <!--  <td><?php //echo $post['username']?></td>-->
+                            <td><a href="<?php echo base_url()?>users/check_profile/<?php echo $post['proposed_id'] ?>"><?php echo $post['username']?></a></td>
                        <?php endif;?>
                         <td>
                             <?php  // echo anchor("welcome/show/{$post->id}", 'View', array('class' => 'badge badge-primary')); ?>
