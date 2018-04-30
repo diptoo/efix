@@ -124,7 +124,7 @@ if(!$this->upload->do_upload('userfile3')){
     //  exit();
       $data =array(
         'cost'=>$this->input->post('pay'),
-
+        'service_charge'=>$this->input->post('inter'),
         'days'=>$this->input->post('days'),
         'definition'=>$this->input->post('definition'),
         'type_id'=>$this->session->userdata('type_id'),

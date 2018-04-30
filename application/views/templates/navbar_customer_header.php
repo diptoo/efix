@@ -117,7 +117,7 @@
         <div class="navbar-collapse sidebar-sticky">
           <ul class="nav navbar-collapse flex-column">
             <li class="nav-item active">
-              <a class="nav-link GugiFont" href="<?php echo base_url();?>users/myprofile">My Account<span class="sr-only">(current)</span></a>
+              <a class="nav-link GugiFont" href="<?php echo base_url();?>users/myprofile"><i class="fa fa-user"></i>My Account<span class="sr-only">(current)</span></a>
 
             </li>
             <li class="nav-item">
