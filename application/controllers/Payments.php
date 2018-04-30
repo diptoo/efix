@@ -7,6 +7,7 @@ class Payments extends CI_Controller
         parent::__construct();
         $this->load->model('payment_model');
     }
+    //payment
     public function payment_shop()
     {
         $data['posts'] = $this->payment_model->payment_shop();
