@@ -12,22 +12,35 @@
 <div class="post-body">
 	<?php echo $post['body']; ?>
 </div>
+<div class="row">
 
+    <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img1']; ?>" alt="Card image cap">
+        </div>
+    </div>
 
-<!--  Show Image1 -->
-<div class="card" style="width: 18rem;">
-	<img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img1']; ?>" alt="Card image cap">
+    <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img2']; ?>" alt="Card image cap">
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img3']; ?>" alt="Card image cap">
+        </div>
+    </div>
+
 </div>
+<!--  Show Image1 -->
+
 
 <!--  Show Image2 -->
-<div class="card" style="width: 18rem;">
-	<img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img2']; ?>" alt="Card image cap">
-</div>
+
 
 <!--  Show Image3 -->
-<div class="card" style="width: 18rem;">
-	<img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img3']; ?>" alt="Card image cap">
-</div>
+
 
 
 <hr>

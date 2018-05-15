@@ -28,9 +28,6 @@
     background-color: #fff;
   }
 
-  .img {
-    border-radius: 50%;
-  }
 
   .border-class {
     border: 2px solid #47494c;
@@ -74,7 +71,7 @@
     }
 
     .img {
-      border-radius: 50%;
+        height:200px;
     }
 
     .border-class {
