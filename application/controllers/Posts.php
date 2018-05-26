@@ -7,10 +7,13 @@ class Posts extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-
+        if(!$this->session->userdata('logged_in'))
+        {
+            redirect('users/login');
+        }
         $this->load->model('user_model');
-
         $this->load->model('post_model');
+        $this->load->model('rating_model');
     }
 
 // For all post retrieve
@@ -134,6 +137,12 @@ class Posts extends CI_Controller
 
     public function push_proposal($id)
     {
+
+        $type_id = $this->session->userdata('type_id');
+        $user_id = $this->session->userdata('user_id');
+
+        //print_r();
+      //exit();
       $this->post_model->insert_proposal($id);
       redirect('posts/index/2');
     }

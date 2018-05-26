@@ -71,7 +71,8 @@
     }
 
     .img {
-        height:200px;
+        border-radius: 50%;
+
     }
 
     .border-class {

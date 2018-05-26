@@ -5,7 +5,7 @@
 <?php echo form_open_multipart('users/register/' . $iid); ?> <!--will go to users controller , register method -->
 
 <div class="form-group">
-    <label>Email</label>
+    <label>Email<span style="color: red">&#10033</span></label>
 <!--
     <input type="email" class="form-control" name="email" placeholder="Email" value="set_value('email')">
 -->
@@ -16,14 +16,14 @@
     </div>
 </div>
 <div class="form-group">
-    <label>Password</label>
+    <label>Password<span style="color: red">&#10033</span></label>
     <input type="password" class="form-control" name="password" placeholder="Password">
     <div class="col-md-5">
           <?php echo form_error('password', '<div class="text-danger">', '</div>'); ?>
     </div>
 </div>
 <div class="form-group">
-    <label>Confirm Password</label>
+    <label>Confirm Password<span style="color: red">&#10033</span></label>
     <input type="password" class="form-control" name="confirm_pass" placeholder="Confirm Password">
 
     <div class="col-md-5">

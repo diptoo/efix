@@ -7,6 +7,7 @@
                 <th scope="col">Cost</th>
                 <th scope="col">Days</th>
                 <th scope="col">Definition</th>
+                <th scope="col" style="color: red">Rating</th>
                 <?php if($posts[0]['type_id']==2):?>
                 <th scope="col">Shop Name</th>
               <?php endif;?>
@@ -27,13 +28,13 @@
                         <td><?php echo $post['cost'] ?></td>
                         <td><?php echo $post['days']?></td>
                         <td><?php echo $post['definition']?></td>
+                        <td style="color: red"><?php echo $post['avg']?></td>
                         <?php if($post['type_id']==2):?>
                       <!--    <td><?php //echo $post['shop_name']?></td>-->
                             <td><a href="<?php echo base_url()?>users/check_profile/<?php echo $post['proposed_id'] ?>"><?php echo $post['shop_name']?></a></td>
                         <?php endif;?>
                         <?php if($post['type_id']==3):?>
                           <td><?php echo $post['expert_at']?></td>
-                        <!--  <td><?php //echo $post['username']?></td>-->
                             <td><a href="<?php echo base_url()?>users/check_profile/<?php echo $post['proposed_id'] ?>"><?php echo $post['username']?></a></td>
                        <?php endif;?>
                         <td>

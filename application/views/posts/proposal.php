@@ -11,8 +11,8 @@
      var payment = (+amount + +interest).toFixed(0);
      payment = payment.toString();
      interest = interest.toString();
-     document.getElementById('interest').innerHTML= "Service Charge = "+interest;
-     document.getElementById('payment').innerHTML = "Total Cost = "+payment;
+     document.getElementById('interest').innerHTML= "Service Charge = "+interest+" TK";
+     document.getElementById('payment').innerHTML = "Total Cost = "+payment+" TK";
      document.getElementById('pay').value=payment;
      document.getElementById('inter').value=interest;
   }
@@ -39,7 +39,7 @@
     <?php echo form_open('posts/push_proposal/'.$post['id']); ?>
     <div class="form-group">
         <label>Cost</label>
-        <input id="amount" type="text" class="form-control" name="cost" onkeyup="computePayment()" placeholder="Cost">
+        <input id="amount" type="number" class="form-control" name="cost" onkeyup="computePayment()" placeholder="Cost">
     </div>
     <div class="form-group">
         <label>Days</label>

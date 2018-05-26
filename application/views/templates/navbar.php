@@ -104,6 +104,9 @@
                     <li class="nav-item">
                         <a class="nav-link GugiFont" href="<?php echo base_url(); ?>posts/index/2">See All Posts</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link GugiFont" href="<?php echo base_url(); ?>proposals/index">DASHBOARD</a>
+                    </li>
                     <?php if ($this->session->userdata('type_id') != 1): ?>
                         <li class="nav-item">
                             <a class="nav-link GugiFont" href="<?php echo base_url(); ?>users/proposal_status">Proposal

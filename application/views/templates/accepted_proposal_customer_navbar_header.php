@@ -30,6 +30,10 @@
   .img {
     border-radius: 50%;
   }
+  .img2
+  {
+      height:200px;
+  }
 
   .border-class {
     border: 2px solid #47494c;

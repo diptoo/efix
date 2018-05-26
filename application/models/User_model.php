@@ -60,31 +60,17 @@ class User_model extends CI_Model
             //print_r($result->result_array());
             //exit();
             return $result->result_array();
-//
         }
         elseif ($result_array[0]['type_id'] == 1) {
-            //echo "1 a dhukse";
-            //exit();
             $result = $this->db->query("SELECT id,type_id,profilepic,address,dob,zipcode,contact,username,age,gender,nationality,cust_id,email,status from users
         INNER JOIN customer as cust on users.id =cust.cust_id
         WHERE users.email='$email' AND
         users.password='$password'
         ");
-         //   print_r($result->result_array());
-         //   exit();
+
             return $result->result_array();
-//
         }
 
-
-        // exit();
-/*
-        if ($result->num_rows() == 1) {
-            return $result->row(0)->id;
-        } else {
-            return false;
-        }
-*/
         return false;
     }
   // get_proposal
@@ -92,37 +78,55 @@ class User_model extends CI_Model
   public function get_proposal($type_id,$id) //id is post id
   {
     $temp = $this->session->userdata('user_id');
-   // print_r($id);
-    //exit();
+
     if($type_id==2)
     {
-       // $query=$this->db->query("select avg(rating) from review where type_id=$type_id");
+      //$query=$this->db->query("select avg(rating) as avg from review where type_id=$type_id");
 
-      $query=$this->db->query("SELECT pst.id as pst_id,users.type_id,cost,definition,title,shop_name,days,proposed_id,pr.id  from proposal as pr
+//        $query=$this->db->query("select id from proposal as pr INNER JOIN posts as pst on pr.post_id=pst.id ");
+      $query=$this->db->query("SELECT pst.id as pst_id,users.type_id,cost,definition,title,shop_name,days,proposed_id,pr.id,avg(rating) as avg from proposal as pr
       INNER JOIN posts as pst
       on pr.post_id=pst.id
       INNER JOIN repairshop as rep
       on rep.shop_id = pr.proposed_id
       INNER JOIN users
       on users.id = pr.proposed_id
-      INNER JOIN review
-      on users.id = review.user_id
-
+      INNER join review
+      on review.user_id = pr.proposed_id
       WHERE pst.cust_id=$temp
       and pst.id = $id
       and pr.status=1
+      GROUP BY review.user_id
       ");
+
+      //  exit();
+       // $temp2 = $data[0]['proposed_id'];
+       // print_r($temp2);
+        //print_r($data[0]['id']);
+       // $query2= $this->db->query("select avg(rating) as avg from review where user_id=$temp2");
+       // $data2=$query2->result_array();
+       // $data[0]['avg'] = $data2[0]['avg'];
+       // print_r($data);
+       // return $data;
+        //exit();
     }
     elseif ($type_id==3) {
-      $query=$this->db->query("SELECT pst.id as pst_id,users.type_id,definition,tech.username,cost,title,username,expert_at,days,proposed_id,pr.id from proposal as pr
+       // echo "dhukse";
+       // exit();
+      $query=$this->db->query("SELECT 
+pst.id as pst_id,users.type_id,definition,tech.username,cost,title,username,expert_at,days,proposed_id,pr.id,avg(rating) as avg from proposal as pr
       INNER JOIN posts as pst
       on pr.post_id=pst.id
       INNER JOIN technician as tech
       on tech.technician_id = pr.proposed_id
       INNER JOIN users
       on users.id = pr.proposed_id
+      INNER join review
+      on review.user_id = pr.proposed_id
       WHERE pst.cust_id=$temp
       and pst.id = $id
+      GROUP BY review.user_id
+
       ");
     }
   //  echo "<pre>";

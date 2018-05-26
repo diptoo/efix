@@ -16,19 +16,19 @@
 
     <div class="col-sm-4">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img1']; ?>" alt="Card image cap">
+            <img class="card-img-top img2 img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img1']; ?>" alt="Card image cap">
         </div>
     </div>
 
     <div class="col-sm-4">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img2']; ?>" alt="Card image cap">
+            <img class="card-img-top img2 img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img2']; ?>" alt="Card image cap">
         </div>
     </div>
 
     <div class="col-sm-4">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img3']; ?>" alt="Card image cap">
+            <img class="card-img-top img2 img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img3']; ?>" alt="Card image cap">
         </div>
     </div>
 

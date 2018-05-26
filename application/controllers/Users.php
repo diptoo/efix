@@ -4,8 +4,13 @@ class Users extends CI_Controller{
     {
         parent::__construct();
 
+
+
         $this->load->model('user_model');
         $this->load->model('post_model');
+        header('Cache-Control: no cache'); //no cache
+
+        session_cache_limiter('must-revalidate');
     }
 
     // Register user
@@ -14,16 +19,13 @@ class Users extends CI_Controller{
     //customer  always status 1 , status 4 means customer is blocked
     public function register($iidd){
 
-
-
-
         $data['title'] = 'Sign Up';
 
        // $iid="2";
         $data['iid']=$iidd;
         //die($iid);
         $this->form_validation->set_rules('username', 'Username');
-        $this->form_validation->set_rules('email', 'Email','required');
+        $this->form_validation->set_rules('email', 'Email','required|callback_check_email_exists');
         $this->form_validation->set_rules('password', 'Password','required|min_length[4]|callback_is_password_strong');
         $this->form_validation->set_rules('confirm_pass', 'Confirm Password', 'required|matches[password]');
         $this->form_validation->set_rules('contact','Contact No','required|min_length[6]');
@@ -34,36 +36,22 @@ class Users extends CI_Controller{
             $this->load->view('users/register', $data);
             $this->load->view('templates/footer');
         } else {
-            // Encrypt passwordecho ""
-           // $enc_password = md5($this->input->post('password'));
-            //echo "dhukse";
-            //die($iid);
-            // Upload Image
+
 
             $temp = $this->input->post('dob');
-            // echo @date('Y-m-d');
              $temp2=@date('Y-m-d');
-          //   echo $temp2;
 
-          //  echo '\n';
-          //  echo $temp;
-
-
-//  echo '\n';
             $age = $temp2-$temp;
         $config['upload_path'] = './assets/images/profilepic/';
-      //  print_r($config['upload_path']);
-      //  exit();
+
         $config['allowed_types'] = 'gif|jpg|png';
         $config['max_size'] = '2048';
         $config['max_width'] = '2000';
         $config['max_height'] = '2000';
         $this->load->library('upload', $config);
-        //$temp = $this->upload->data();
-        //print_r($temp);
+
         if(!$this->upload->do_upload('userfile1')){
-          //echo "dhukse";
-          //exit();
+
           $errors = array('error' => $this->upload->display_errors());
           $post_image = 'noimage.jpg';
         } else {
@@ -144,7 +132,7 @@ class Users extends CI_Controller{
         'smtp_host'=>'ssl://smtp.googlemail.com',
         'smtp_port'=>465,
         'smtp_user'=>'lm33120@gmail.com',
-        'smtp_pass'=>'BFfDNM11223344',
+        'smtp_pass'=>'BFfDNM44332211',
         'mailtype'=>'html',
         'charset'=>'iso-8859-1',
         'wordwrap'=>TRUE
@@ -156,7 +144,10 @@ $this->email->to($email);
 
 
 $this->email->subject('e-Fix registration');
-$this->email->message('Your registration has been accepted by system admin of efix. You can login now');
+$this->email->message('Your registration has been accepted by system admin of efix. You can login now.
+http://localhost/efix/index.php/
+');
+
 $this->email->set_newline("\r\n");
 if($this->email->send())
 {
@@ -200,7 +191,9 @@ return;
           //  $this->load->view('users/lo');
             $this->load->view('users/login', $data);
             $this->load->view('templates/footer');
-        } else {
+        }
+
+        else {
 
             // Get email
             $email = $this->input->post('email');
@@ -259,6 +252,7 @@ return;
                 //Repair shop
                 $data['post']=$result_array;
 
+
                 if($result_array[0]['type_id']==2)
                 {
                    $this->load->view('templates/navbar');
@@ -294,6 +288,10 @@ return;
 
 public function myprofile()
 {
+    if(!$this->session->userdata('logged_in'))
+    {
+        redirect('users/login');
+    }
   $email = $this->session->userdata('email');
   $password = $this->session->userdata('password');
   $result_array = $this->user_model->login($email, $password);
@@ -325,6 +323,10 @@ public function myprofile()
 }
   public function check_profile($userid)
   {
+      if(!$this->session->userdata('logged_in'))
+      {
+          redirect('users/login');
+      }
       $result_array = $this->user_model->check_profile($userid);
       $data['post']=$result_array;
 
@@ -353,7 +355,7 @@ public function myprofile()
         $this->session->unset_userdata('email');
         // Set message
         $this->session->set_flashdata('user_loggedout', 'You are now logged out');
-        redirect('users/login');
+        redirect('');
     }
 
 //View proposal- called from views/posts/view
@@ -371,7 +373,7 @@ public function myprofile()
     public function change_proposal_status($st1,$st2,$st3,$pst_id)
     {
         $this->user_model->change_proposal_status($st1,$st2,$st3,$pst_id);
-        echo "dhukse";
+        //echo "dhukse";
         $this->session->set_flashdata('proposal_accept', 'You have accepted a proposal');
         redirect("users/mypost");
     }
