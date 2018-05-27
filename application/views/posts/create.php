@@ -83,7 +83,7 @@
         var name2="userfile"+count;
 
         var html='  \t  <input type="file" name='+name2+ ' size="20">\n';
-        alert(html);
+        //alert(html);
         $('#image').append(html);
     })
 </script>
