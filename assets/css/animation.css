@@ -1,0 +1,314 @@
+
+     .animation {
+         height: 590px;
+         width: 100%;
+         background: #343a40;
+
+     }
+
+     .sky {
+         height: 75%;
+         width: 100%;
+         background: #183c55;
+         background-image: url("http://localhost/efix/assets/images/animation/editedefix.png");
+         position:relative;
+         animation:animatebottom 0.6s;
+     }
+
+     /*.w3-animate-bottom{position:relative;animation:animatebottom 0.4s}*/
+     @keyframes animatebottom{
+         from{bottom:-300px;opacity:0}
+         to{bottom:0;opacity:1}}
+
+     .ground {
+         height: 25%;
+         width: 100%;
+         background: #4dbfd9;
+         background-image: url("http://localhost/efix/assets/images/animation/road.png");
+     }
+
+
+     /*Board*/
+     #board {
+         font-weight: bold;
+         position: relative;
+         -webkit-animation: getup .5s infinite;
+         /* Safari 4.0 - 8.0 */
+         animation: getup 20s infinite;
+     }
+
+     #board {
+         -webkit-animation-timing-function: linear;
+     }
+
+     @-webkit-keyframes getup {
+         0%   {left:0px; top:0px;}
+         25%  {left:600px; top:0px;}
+         50%  {left:600px; top:300px;}
+         75%  {left:0px; top:200px;}
+         100% {left:0px; top:0px;}
+     }
+
+     /* Standard syntax */
+     @keyframes getup {
+         0%   {left:320px; top:420px; opacity: 0}
+         42%   {left:320px; top:420px; opacity: 0}
+         43%  {left:320px; top:377px; opacity: 1}
+         100%  {left:320px; top:377px; opacity: 1}
+
+     */
+     }
+
+     #drone:hover img {
+         animation: bilbrd 5.0s;
+         animation-iteration-count: 1;
+     }
+
+     @keyframes bilbrd {
+         /*0% {transform: translate(3px, 3px) rotate(0deg);}
+         100% {transform: translate(3px, 3px) rotate(360deg);}*/
+
+     }
+
+      /*drone*/
+     #drone {
+         font-weight: bold;
+         position: relative;
+         -webkit-animation: fly .5s infinite;
+         /* Safari 4.0 - 8.0 */
+         animation: fly 20s infinite;
+     }
+
+     #drone {
+         -webkit-animation-timing-function: linear;
+     }
+
+     @-webkit-keyframes fly {
+         0%   {left:0px; top:0px;}
+         25%  {left:600px; top:0px;}
+         50%  {left:1000px; top:300px;}
+         75%  {left:0px; top:200px;}
+         100% {left:0px; top:0px;}
+     }
+
+     /* Standard syntax */
+     @keyframes fly {
+         0%   {left:0px; top:0px;}
+         10%  {left:300px; top:0px;}
+         20%  {left:300px; top:310px;}
+         30%  {left:300px; top:170px;}
+         40%  {left:300px; top:310px;}
+         50%  {left:300px; top:170px;}
+         60%  {left:510px; top:170px;}
+         70% {left:700px; top:170px;}
+         90% {left:1005px; top:170px;}
+         100% {left:13005px; top:170px;}
+     }
+
+     #drone:hover img {
+         animation: quad 5.0s;
+         animation-iteration-count: 1;
+     }
+
+     @keyframes quad {
+         /*0% {transform: translate(3px, 3px) rotate(0deg);}
+         100% {transform: translate(3px, 3px) rotate(360deg);}*/
+
+     }
+
+     /*car*/
+     #car {
+         font-weight: bold;
+         position: relative;
+         -webkit-animation: speed .5s infinite;
+         /* Safari 4.0 - 8.0 */
+         animation: speed 20s infinite;
+     }
+
+     #car {
+         -webkit-animation-timing-function: linear;
+     }
+
+     @-webkit-keyframes speed {
+         from {
+             left: 0px;
+             top: 350px;
+         }
+         to {
+             left: 300px;
+             top: 50px;
+         }
+     }
+
+     /* Standard syntax */
+
+     @keyframes speed {
+         from {
+             left: 1300px;
+             top: 215px;
+         }
+         to {
+             left: 0px;
+             top: 215px;
+         }
+     }
+
+     #car:hover img {
+         animation: go 5.0s;
+         animation-iteration-count: 1;
+     }
+
+     @keyframes go {
+         /*0% {transform: translate(3px, 3px) rotate(0deg);}
+         100% {transform: translate(3px, 3px) rotate(360deg);}*/
+         animation: speed .50s infinite;
+     }
+
+     /*cycle*/
+     #cycle {
+         font-weight: bold;
+         position: relative;
+         -webkit-animation: two .5s infinite;
+         /* Safari 4.0 - 8.0 */
+         animation: two 20s infinite;
+     }
+
+     #cycle {
+         -webkit-animation-timing-function: linear;
+     }
+
+     @-webkit-keyframes two {
+         from {
+             left: 0px;
+             top: 155px;
+         }
+         to {
+             left: 300px;
+             top: 155px;
+         }
+     }
+
+     /* Standard syntax */
+
+     @keyframes two {
+         from {
+             left: 0px;
+             top: 225px;
+         }
+         to {
+             left: 1300px;
+             top: 225px;
+         }
+     }
+
+     #cycle:hover img {
+         animation: wheel 5.0s;
+         animation-iteration-count: 1;
+     }
+
+     .autowide{
+       font-family: 'Atomic Age', cursive;
+       font-family: 'Audiowide', cursive;
+       font-size: 180%;
+     }
+
+     @keyframes wheel {
+         /*0% {transform: translate(3px, 3px) rotate(0deg);}
+         100% {transform: translate(3px, 3px) rotate(360deg);}*/
+         animation: speed .50s infinite;
+     }
+
+      /*aerolane*/
+     #plane {
+         font-weight: bold;
+         position: relative;
+         -webkit-animation: plane_round .5s infinite;
+         /* Safari 4.0 - 8.0 */
+         animation: plane_round 20s infinite;
+     }
+
+     #plane {
+         -webkit-animation-timing-function: linear;
+     }
+
+     @-webkit-keyframes plane_round {
+         from {
+             left: 0px;
+             top: 50px;
+         }
+         to {
+             left: 300px;
+             top: 50px;
+         }
+     }
+
+     /* Standard syntax */
+
+     @keyframes plane_round {
+         from {
+             left: 0px;
+             top: 60px;
+         }
+         to {
+             left: 1300px;
+             top: 60px;
+         }
+     }
+
+     #plane:hover img {
+         animation: round 5.0s;
+         animation-iteration-count: 1;
+     }
+
+     @keyframes round {
+         0% {transform: translate(3px, 3px) rotate(0deg);}
+         100% {transform: translate(3px, 3px) rotate(360deg);}
+     }
+
+      /*ship*/
+     #ship {
+         font-weight: bold;
+         position: relative;
+         -webkit-animation: ship_up 25s infinite;
+         /* Safari 4.0 - 8.0 */
+         animation: ship_up 25s infinite;
+     }
+
+     #ship {
+         -webkit-animation-timing-function: linear;
+     }
+
+     @-webkit-keyframes ship_up {
+         from {
+             left: 0px;
+             top: 50px;
+         }
+         to {
+             left: 300px;
+             top: 50px;
+         }
+     }
+
+     /* Standard syntax */
+
+     @keyframes ship_up {
+         from {
+             left: 0px;
+             top: 50px;
+         }
+         to {
+             left: 1300px;
+             top: 50px;
+         }
+     }
+
+     #ship:hover img {
+         animation: up 5.0s;
+         animation-iteration-count: infinite;
+     }
+
+     @keyframes up {
+         0% {transform: translate(1px, 1px) rotate(-10deg);}
+
+     }
+

@@ -1,0 +1,509 @@
+ .animation {
+   height: 610px;
+   width: 100%;
+   background: #343a40;
+
+ }
+
+ /*Board*/
+ #text {
+   font-weight: bold;
+   position: relative;
+   top: 100px;
+   left: 560px;
+   color: #228DFF;
+ }
+
+
+ .sky {
+   height: 85%;
+   width: 100%;
+   min-height: 100px;
+   position: relative;
+   background: #183c55;
+   background-image: url("http://localhost/efix/assets/images/animation/againcity.png");
+   position:relative;
+   animation:animatebottom 0.6s;
+ }
+
+ /*.w3-animate-bottom{position:relative;animation:animatebottom 0.4s}*/
+ @keyframes animatebottom{
+   from{bottom:-300px;opacity:0}
+   to{bottom:0;opacity:1}
+ }
+
+ .ground {
+   height: 15%;
+   width: 100%;
+   /* position: relative;*/
+   background: #4dbfd9;
+   background-image: url("http://localhost/efix/assets/images/animation/road.png");
+ }
+
+
+ /*Board*/
+ #board {
+   font-weight: bold;
+   position: relative;
+   -webkit-animation: getup .5s infinite;
+   /* Safari 4.0 - 8.0 */
+   animation: getup 20s infinite;
+ }
+
+ #board {
+   -webkit-animation-timing-function: linear;
+ }
+
+ @-webkit-keyframes getup {
+   0%   {left:0px; top:0px;}
+   25%  {left:600px; top:0px;}
+   50%  {left:600px; top:300px;}
+   75%  {left:0px; top:200px;}
+   100% {left:0px; top:0px;}
+ }
+
+ /* Standard syntax */
+ @keyframes getup {
+   0%   {left:320px; top:490px; opacity: 0}
+   42%   {left:320px; top:490px; opacity: 0}
+   43%  {left:320px; top:440px; opacity: 1}
+   100%  {left:320px; top:440px; opacity: 1}
+
+
+ }
+
+ #drone:hover img {
+   animation: bilbrd 5.0s;
+   animation-iteration-count: 1;
+ }
+
+ @keyframes bilbrd {
+         /*0% {transform: translate(3px, 3px) rotate(0deg);}
+         100% {transform: translate(3px, 3px) rotate(360deg);}*/
+
+       }
+
+       /*drone*/
+       #drone {
+         font-weight: bold;
+         position: relative;
+         -webkit-animation: fly .5s infinite;
+         /* Safari 4.0 - 8.0 */
+         animation: fly 20s infinite;
+       }
+
+       #drone {
+         -webkit-animation-timing-function: linear;
+       }
+
+       @-webkit-keyframes fly {
+         0%   {left:0px; top:0px;}
+         25%  {left:600px; top:0px;}
+         50%  {left:1000px; top:300px;}
+         75%  {left:0px; top:200px;}
+         100% {left:0px; top:0px;}
+       }
+
+       /* Standard syntax */
+       @keyframes fly {
+         0%   {left:0px; top:0px;}
+         10%  {left:300px; top:0px;}
+         20%  {left:300px; top:380px;}
+         30%  {left:300px; top:170px;}
+         40%  {left:300px; top:380px;}
+         50%  {left:300px; top:170px;}
+         60%  {left:510px; top:170px;}
+         70% {left:700px; top:170px;}
+         90% {left:1005px; top:170px;}
+         100% {left:13005px; top:170px;}
+       }
+
+       #drone:hover img {
+         animation: quad 5.0s;
+         animation-iteration-count: 1;
+       }
+
+       @keyframes quad {
+         /*0% {transform: translate(3px, 3px) rotate(0deg);}
+         100% {transform: translate(3px, 3px) rotate(360deg);}*/
+
+       }
+
+       /*car*/
+       #car {
+         font-weight: bold;
+         position: relative;
+         -webkit-animation: speed .5s infinite;
+         /* Safari 4.0 - 8.0 */
+         animation: speed 20s infinite;
+       }
+
+       #car {
+         -webkit-animation-timing-function: linear;
+       }
+
+       @-webkit-keyframes speed {
+         from {
+           left: 0px;
+           top: 30px;
+         }
+         to {
+           left: 300px;
+           top: 50px;
+         }
+       }
+
+       /* Standard syntax */
+
+       @keyframes speed {
+         from {
+           left: 1300px;
+           top: 268px;
+         }
+         to {
+           left: 0px;
+           top: 268px;
+         }
+       }
+
+       #car:hover img {
+         animation: go 5.0s;
+         animation-iteration-count: 1;
+       }
+
+       @keyframes go {
+         /*0% {transform: translate(3px, 3px) rotate(0deg);}
+         100% {transform: translate(3px, 3px) rotate(360deg);}*/
+         animation: speed .50s infinite;
+       }
+
+       /*cycle*/
+       #cycle {
+         font-weight: bold;
+         position: relative;
+         -webkit-animation: two .5s infinite;
+         /* Safari 4.0 - 8.0 */
+         animation: two 20s infinite;
+       }
+
+       #cycle {
+         -webkit-animation-timing-function: linear;
+       }
+
+       @-webkit-keyframes two {
+         from {
+           left: 0px;
+           top: 155px;
+         }
+         to {
+           left: 300px;
+           top: 155px;
+         }
+       }
+
+       /* Standard syntax */
+
+       @keyframes two {
+         from {
+           left: 0px;
+           top: 285px;
+         }
+         to {
+           left: 1300px;
+           top: 285px;
+         }
+       }
+
+       #cycle:hover img {
+         animation: wheel 5.0s;
+         animation-iteration-count: 1;
+       }
+
+       .autowide{
+         font-family: 'Atomic Age', cursive;
+         font-family: 'Audiowide', cursive;
+         font-size: 180%;
+       }
+
+       @keyframes wheel {
+         /*0% {transform: translate(3px, 3px) rotate(0deg);}
+         100% {transform: translate(3px, 3px) rotate(360deg);}*/
+         animation: speed .50s infinite;
+       }
+
+       /*aerolane*/
+       #plane {
+         font-weight: bold;
+         position: relative;
+         -webkit-animation: plane_round .5s infinite;
+         /* Safari 4.0 - 8.0 */
+         animation: plane_round 20s infinite;
+       }
+
+       #plane {
+         -webkit-animation-timing-function: linear;
+       }
+
+       @-webkit-keyframes plane_round {
+         from {
+           left: 0px;
+           top: 50px;
+         }
+         to {
+           left: 300px;
+           top: 50px;
+         }
+       }
+
+       /* Standard syntax */
+
+       @keyframes plane_round {
+         from {
+           left: 0px;
+           top: 60px;
+         }
+         to {
+           left: 1300px;
+           top: 60px;
+         }
+       }
+
+       #plane:hover img {
+         animation: round 5.0s;
+         animation-iteration-count: 1;
+       }
+
+       @keyframes round {
+         0% {transform: translate(3px, 3px) rotate(0deg);}
+         100% {transform: translate(3px, 3px) rotate(360deg);}
+       }
+
+       /*ship*/
+       #ship {
+         font-weight: bold;
+         position: relative;
+         -webkit-animation: ship_up 25s infinite;
+         /* Safari 4.0 - 8.0 */
+         animation: ship_up 25s infinite;
+       }
+
+       #ship {
+         -webkit-animation-timing-function: linear;
+       }
+
+       @-webkit-keyframes ship_up {
+         from {
+           left: 0px;
+           top: 10px;
+         }
+         to {
+           left: 300px;
+           top: 10px;
+         }
+       }
+
+       /* Standard syntax */
+
+       @keyframes ship_up {
+         from {
+           left: 0px;
+           top: 20px;
+         }
+         to {
+           left: 1300px;
+           top: 20px;
+         }
+       }
+
+       #ship:hover img {
+         animation: up 5.0s;
+         animation-iteration-count: infinite;
+       }
+
+       @keyframes up {
+         0% {transform: translate(1px, 1px) rotate(-10deg);}
+
+       }
+
+
+       @font-face {
+        font-family: 'Neuropol';
+        font-style: normal;
+        font-weight: 400;
+        src: local('neuropol'), local('neuropol-Regular'), url(http://themes.googleusercontent.com/static/fonts/neuropol/v4/AKI-lyzyNHXByGHeOcds_w.woff) format('woff');
+      }
+
+
+
+
+
+      /*neeeeoooon*/
+      .text p{
+        /*text-align:center;*/
+        font-size:4em;
+        /*margin:10px 0 10px 0;*/ 
+        position: absolute;
+      }
+
+      .text a{
+        text-decoration:none; 
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        transition: all 0.5s;
+      }
+
+      .text p a{
+        color:#228DFF;
+        font-family:neuropol;
+      }
+      .text p a:hover{
+        -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+        -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+        animation: neon1 1.5s ease-in-out infinite alternate; 
+        text-decoration: none;
+      }
+
+
+
+      p a:hover{
+        color:#ffffff;  
+      }
+
+
+
+      /*glow for webkit*/
+      @-webkit-keyframes neon1 {
+        from {
+          text-shadow: 0 0 10px #fff,
+          0 0 20px  #fff,
+          0 0 30px  #fff,
+          0 0 40px  #228DFF,
+          0 0 70px  #228DFF,
+          0 0 80px  #228DFF,
+          0 0 100px #228DFF,
+          0 0 150px #228DFF;
+        }
+        to {
+          text-shadow: 0 0 5px #fff,
+          0 0 10px #fff,
+          0 0 15px #fff,
+          0 0 20px #228DFF,
+          0 0 35px #228DFF,
+          0 0 40px #228DFF,
+          0 0 50px #228DFF,
+          0 0 75px #228DFF;
+        }
+      }
+
+
+
+      /*glow for mozilla*/
+      @-moz-keyframes neon1 {
+        from {
+          text-shadow: 0 0 10px #fff,
+          0 0 20px  #fff,
+          0 0 30px  #fff,
+          0 0 40px  #228DFF,
+          0 0 70px  #228DFF,
+          0 0 80px  #228DFF,
+          0 0 100px #228DFF,
+          0 0 150px #228DFF;
+        }
+        to {
+          text-shadow: 0 0 5px #fff,
+          0 0 10px #fff,
+          0 0 15px #fff,
+          0 0 20px #228DFF,
+          0 0 35px #228DFF,
+          0 0 40px #228DFF,
+          0 0 50px #228DFF,
+          0 0 75px #228DFF;
+        }
+      }
+
+
+
+      /*glow*/
+      @keyframes neon1 {
+        from {
+          text-shadow: 0 0 10px #fff,
+          0 0 20px  #fff,
+          0 0 30px  #fff,
+          0 0 40px  #228DFF,
+          0 0 70px  #228DFF,
+          0 0 80px  #228DFF,
+          0 0 100px #228DFF,
+          0 0 150px #228DFF;
+        }
+        to {
+          text-shadow: 0 0 5px #fff,
+          0 0 10px #fff,
+          0 0 15px #fff,
+          0 0 20px #228DFF,
+          0 0 35px #228DFF,
+          0 0 40px #228DFF,
+          0 0 50px #228DFF,
+          0 0 75px #228DFF;
+        }
+      }
+
+
+      .chip {
+        color: black;
+        display: inline-block;
+        padding: 0 25px;
+        height: 50px;
+        font-size: 16px;
+        line-height: 50px;
+        border-radius: 25px;
+        background-color: #f1f1f1;
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+
+      .chip img {
+        float: left;
+        margin: 0 10px 0 -25px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+      }
+
+      .footer {
+/*        position: fixed;*/
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: red;
+        color: white;
+        text-align: center;
+      }
+
+
+/*ALERT*/
+/* The alert message box */
+#alert {
+    margin-bottom: 15px;
+    padding: 4px 12px;
+}
+
+.danger {
+    background-color: #ffdddd;
+    border-left: 6px solid #f44336;
+}
+
+.success {
+    background-color: #ddffdd;
+    border-left: 6px solid #4CAF50;
+}
+
+.info {
+    background-color: #e7f3fe;
+    border-left: 6px solid #2196F3;
+}
+
+
+.warning {
+    background-color: #ffffcc;
+    border-left: 6px solid #ffeb3b;
+}

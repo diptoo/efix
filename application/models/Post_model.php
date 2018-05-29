@@ -6,34 +6,20 @@ class Post_model extends CI_Model
     {
         if ($slug === FALSE) {
 
-            //  $this->db->order_by('id', 'DESC');
-
-            //    $query = $this->db->get('posts');
             $query = $this->db->query("SELECT title,body,username,created_at,slug,posts.cust_id from posts INNER JOIN customer
             where posts.cust_id = customer.cust_id order by posts.id DESC
             ");
-            print_r("dhukse");
-            //$temp = $query->result_array();
-            //  print_r($temp);
-           // exit();
+
             return $query->result_array();
         }
 
-      //  $query = $this->db->get_where('posts', array('slug' => $slug));
         $query = $this->db->query("SELECT *from posts INNER JOIN 
 images ON posts.id = images.post_id
 where slug = '$slug'");
         return $query->result_array();
-//        print_r($query->result_array());exit();
-//        return $query->row_array();
+
     }
-    /*    //get_my_post
-        public function get_my_post()
-        {
-          $query = $this->db->query("SELECT * from posts as pt
-          INNER JOIN
-          ");
-        } */
+
 //called from Posts controller create method
     public function create_post()
     {
