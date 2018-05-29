@@ -20,8 +20,10 @@ class Posts extends CI_Controller
     public function index($iid)
     {
         // $data['title'] = ucfirst($page);
+        //print_r("dhukse");exit();
         $data['title'] = 'Latest posts';
         $data['posts'] = $this->post_model->get_posts();// returns all post array
+        //print_r($data['posts']);exit();
         if($iid == 1)
         {
           $this->load->view('templates/navbar_customer_header');
@@ -41,6 +43,8 @@ class Posts extends CI_Controller
     public function view($slug = NULL)
     {
         $data['post'] = $this->post_model->get_posts($slug);
+       // print_r($data['post']);
+       // exit();
         if (empty($data['post'])) {
             show_404();
         }
@@ -86,7 +90,7 @@ class Posts extends CI_Controller
 
 
         if ($this->form_validation->run() === FALSE) {
-            $this->load->view('templates/navbar_customer_header');
+           // $this->load->view('templates/navbar_customer_header');
             $this->load->view('posts/create', $data);
             $this->load->view('templates/navbar_customer_footer');
         } else {
@@ -100,7 +104,7 @@ class Posts extends CI_Controller
     // called from views/posts/view
     public function edit($slug)
     {
-        $data['post'] = $this->post_model->get_posts($slug);
+        $data['post'] = $this->post_model->get_posts_slug($slug);
         if (empty($data['post'])) {
             show_404();
         }
@@ -126,7 +130,9 @@ class Posts extends CI_Controller
 
     public function proposal($slug)
     {
-        $data['post'] = $this->post_model->get_posts($slug);
+        $data['post'] = $this->post_model->get_posts_slug($slug);
+        //print_r($data['post']);
+       // exit();
         if (empty($data['post'])) {
             show_404();
         }
@@ -141,9 +147,7 @@ class Posts extends CI_Controller
         $type_id = $this->session->userdata('type_id');
         $user_id = $this->session->userdata('user_id');
 
-        //print_r();
-      //exit();
-      $this->post_model->insert_proposal($id);
-      redirect('posts/index/2');
+        $this->post_model->insert_proposal($id);
+        redirect('posts/index/2');
     }
 }

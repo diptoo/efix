@@ -12,14 +12,20 @@ class Post_model extends CI_Model
             $query = $this->db->query("SELECT title,body,username,created_at,slug,posts.cust_id from posts INNER JOIN customer
             where posts.cust_id = customer.cust_id order by posts.id DESC
             ");
+            print_r("dhukse");
             //$temp = $query->result_array();
             //  print_r($temp);
-            //exit();
+           // exit();
             return $query->result_array();
         }
 
-        $query = $this->db->get_where('posts', array('slug' => $slug));
-        return $query->row_array();
+      //  $query = $this->db->get_where('posts', array('slug' => $slug));
+        $query = $this->db->query("SELECT *from posts INNER JOIN 
+images ON posts.id = images.post_id
+where slug = '$slug'");
+        return $query->result_array();
+//        print_r($query->result_array());exit();
+//        return $query->row_array();
     }
     /*    //get_my_post
         public function get_my_post()
@@ -34,39 +40,11 @@ class Post_model extends CI_Model
 
 // title "sixth post" hole sixth-post kore fele, type is varchar ,no gap is allowed
 //post image
-        $config['upload_path'] = './assets/images/profilepic/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '2048';
-        $config['max_width'] = '2000';
-        $config['max_height'] = '2000';
-        $this->load->library('upload', $config);
+        $this->load->helper('form');
+        $this->load->helper('directory');
+        $this->load->library('upload');
 
 
-        if (!$this->upload->do_upload('userfile4')) {
-            $errors = array('error' => $this->upload->display_errors());
-            $post_image1 = 'noimage.jpg';
-        } else {
-            $data = array('upload_data' => $this->upload->data());
-            $post_image1 = $_FILES['userfile4']['name'];
-        }
-
-        /*if (!$this->upload->do_upload('userfile2')) {
-            $errors = array('error' => $this->upload->display_errors());
-            $post_image2 = 'noimage.jpg';
-        } else {
-            $data = array('upload_data' => $this->upload->data());
-            $post_image2 = $_FILES['userfile2']['name'];
-        } */
-        $post_image2 = $_FILES['userfile2']['name'];
-
-        if (!$this->upload->do_upload('userfile3')) {
-
-            $errors = array('error' => $this->upload->display_errors());
-            $post_image3 = 'noimage.jpg';
-        } else {
-            $data = array('upload_data' => $this->upload->data());
-            $post_image3 = $_FILES['userfile3']['name'];
-        }
 
         $slug = url_title($this->input->post('title'));
         $data = array(
@@ -74,12 +52,84 @@ class Post_model extends CI_Model
             'slug' => $slug,
             'body' => $this->input->post('body'),
             'cust_id' => $this->session->userdata('user_id'),
-            'img1' => $post_image1,
-            'img2' => $post_image2,
-            'img3' => $post_image3
+
         );
         $this->db->insert('posts', $data);
         $post_id = $this->db->insert_id();
+
+        /* Multiple Image Upload */
+
+        $data['uploaded_files']=directory_map('./assets/images/profilepic/');
+        if($this->input->post('submit') && count($_FILES['multipleFiles']['name'])>0)
+        {
+
+            $number_of_files = count($_FILES['multipleFiles']['name']);
+
+            $this->load->library('upload');
+
+            $files = $_FILES;
+
+
+        //    $this->load->library('upload', $config);
+            for ($i=0;$i<$number_of_files;$i++)
+            {
+
+
+
+
+                $_FILES['multipleFiles']['name']=$files['multipleFiles']['name'][$i];
+                $_FILES['multipleFiles']['type'] = $_FILES['multipleFiles']['type'][$i];
+                $_FILES['multipleFiles']['tmp_name'] = $_FILES['multipleFiles']['tmp_name'][$i];
+                $_FILES['multipleFiles']['error'] = $_FILES['multipleFiles']['error'][$i];
+                $_FILES['multipleFiles']['size'] = $_FILES['multipleFiles']['size'][$i];
+
+                $config['upload_path'] = './assets/images/profilepic/';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size'] = '0';
+                $config['max_width'] = '0';
+                $config['max_height'] = '0';
+
+                $this->upload->initialize($config);
+
+                print_r($_FILES['multipleFiles']['name']);
+
+
+
+//                if (!$this->upload->do_upload('multipleFiles')) {
+//                    print_r("error bal");
+//                  //   exit();
+//                    $errors = array('error' => $this->upload->display_errors());
+//                    print_r($errors);
+//                    exit();
+//                    //   $post_image1 = 'noimage.jpg';
+//                } else {
+              //     $data = array('upload_data' => $this->upload->data());
+                 //  echo "success";
+//                  //  print_r($data);
+//                 //   exit();
+                    $post_image1 = $_FILES['multipleFiles']['name'];
+                   print_r($post_image1);
+                     //exit();
+                    $data_image = array(
+                        'images' =>$post_image1,
+                        'post_id' => $post_id,
+                    );
+                    $this->db->insert('images', $data_image);
+
+               //  }
+//                if(!$errors)
+//                {
+//                    redirect('upload/index');
+//                }
+            }
+        }
+//        else{
+//            $this->load->view('upload',$data);
+//        }
+
+
+
+        /*---------------- */
         $data_product = array(
             'product_name' => $this->input->post('product_name'),
             'product_model' => $this->input->post('product_model'),
@@ -92,6 +142,7 @@ class Post_model extends CI_Model
 
         return;
     }
+
 
 //called from posts controller delete method
     public function delete_post($id)
@@ -112,6 +163,13 @@ class Post_model extends CI_Model
         );
         $this->db->where('id', $id);
         return $this->db->update('posts', $data);
+    }
+
+    public function get_posts_slug($slug = FALSE)
+    {
+        $query = $this->db->get_where('posts', array('slug' => $slug));
+
+        return $query->row_array();
     }
 
     public function insert_proposal($id)

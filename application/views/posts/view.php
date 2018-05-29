@@ -6,31 +6,33 @@
 	</div>
 	<div class="col-sm-10">
 		<br>
-		<p class="post-date">Posted on: <?php echo $post['created_at']; ?></p>
-<h3 class="GugiFont"><?php echo $post['title']; ?></h3>
+		<p class="post-date">Posted on: <?php echo $post[0]['created_at']; ?></p>
+<h3 class="GugiFont"><?php echo $post[0]['title']; ?></h3>
 
 <div class="post-body">
-	<?php echo $post['body']; ?>
+	<?php echo $post[0]['body']; ?>
 </div>
 <div class="row">
+    <?php foreach ($post as $pos):?>
 
     <div class="col-sm-4">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top img2 img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img1']; ?>" alt="Card image cap">
+            <img class="card-img-top img2 img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $pos['images']; ?>" alt="Card image cap">
         </div>
     </div>
+    <?php endforeach;?>
 
-    <div class="col-sm-4">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top img2 img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img2']; ?>" alt="Card image cap">
-        </div>
-    </div>
-
-    <div class="col-sm-4">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top img2 img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post['img3']; ?>" alt="Card image cap">
-        </div>
-    </div>
+<!--    <div class="col-sm-4">-->
+<!--        <div class="card" style="width: 18rem;">-->
+<!--            <img class="card-img-top img2 img-fluid" src="http://localhost/efix/assets/images/profilepic/--><?php //echo $post['img2']; ?><!--" alt="Card image cap">-->
+<!--        </div>-->
+<!--    </div>-->
+<!---->
+<!--    <div class="col-sm-4">-->
+<!--        <div class="card" style="width: 18rem;">-->
+<!--            <img class="card-img-top img2 img-fluid" src="http://localhost/efix/assets/images/profilepic/--><?php //echo $post['img3']; ?><!--" alt="Card image cap">-->
+<!--        </div>-->
+<!--    </div>-->
 
 </div>
 <!--  Show Image1 -->
@@ -45,7 +47,7 @@
 
 <hr>
 
-<?php if($this->session->userdata('user_id')==$post['cust_id']): ?>
+<?php if($this->session->userdata('user_id')==$post[0]['cust_id']): ?>
 	<div class="row">
 		<div class="btn-group">
 			<button type="button" class="btn btn-sm centered-text GugiFont" style="width:170px;">Proposals</button>
@@ -54,8 +56,8 @@
 			</button>
 
 			<div class="dropdown-menu">
-				<a class="dropdown-item GugiFont" href="<?php echo base_url(); ?>users/view_proposal/3/<?php echo $post['id']?>">Technician</a>
-				<a class="dropdown-item GugiFont" href="<?php echo base_url(); ?>users/view_proposal/2/<?php echo $post['id']?>">Repair Shop</a>
+				<a class="dropdown-item GugiFont" href="<?php echo base_url(); ?>users/view_proposal/3/<?php echo $post[0]['post_id']?>">Technician</a>
+				<a class="dropdown-item GugiFont" href="<?php echo base_url(); ?>users/view_proposal/2/<?php echo $post[0]['post_id']?>">Repair Shop</a>
 			</div>
 
 		</div>
@@ -64,28 +66,24 @@
 
 
 
-<!-- will go to posts controller edit method-->
-<!--
-<a class="btn btn-dark" href="<?php echo base_url(); ?>users/view_proposal/2/<?php echo $post['id']?>">View Proposal(Repair shop)</a>
-<a class="btn btn-dark" href="<?php echo base_url(); ?>users/view_proposal/3/<?php echo $post['id']?>">View Proposal(Technician)</a>
--->
+
 </script>
 <br>
 <div class="row">
 
 	<div class="col-sm-1">
-		<a class="btn btn-warning" href="edit/<?php echo $post['slug'];?>">Edit</a>
+		<a class="btn btn-warning" href="edit/<?php echo $post[0]['slug'];?>">Edit</a>
 		<?php endif; ?>
 		<?php if($this->session->userdata('type_id')==2 || $this->session->userdata('type_id')==3):?>
-				<a class="btn btn-dark" href="proposal/<?php echo $post['slug'];?>">Give proposal</a>
+				<a class="btn btn-dark" href="proposal/<?php echo $post[0]['slug'];?>">Give proposal</a>
 		<?php endif;?>
 	</div>
 
 	<div class="col-sm-1">
-		<?php if($this->session->userdata('email')=="dipto_admin@gmail.com" || $this->session->userdata('user_id')==$post['cust_id']):?>
+		<?php if($this->session->userdata('email')=="dipto_admin@gmail.com" || $this->session->userdata('user_id')==$post[0]['cust_id']):?>
 		<?php
 		//post controller delete method //post method
-		echo form_open('/posts/delete/'.$post['id']);
+		echo form_open('/posts/delete/'.$post[0]['id']);
 		?>
 		<input type="submit" value="Delete" class="btn btn-danger">
 		</form>

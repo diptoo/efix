@@ -49,7 +49,7 @@
 
     </div>
     <div class="form-group">
-        <label>Problem Definition</label>
+        <label>Solution Definition</label>
         <input type="text" class="form-control" name="definition" placeholder="Problem Definition"/>
     </div>
     <h5 id = "interest"></h5>

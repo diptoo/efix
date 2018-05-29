@@ -26,9 +26,9 @@ class Users extends CI_Controller{
         //die($iid);
         $this->form_validation->set_rules('username', 'Username');
         $this->form_validation->set_rules('email', 'Email','required|callback_check_email_exists');
-        $this->form_validation->set_rules('password', 'Password','required|min_length[4]|callback_is_password_strong');
+        $this->form_validation->set_rules('password', 'Password','required|min_length[6]|callback_is_password_strong');
         $this->form_validation->set_rules('confirm_pass', 'Confirm Password', 'required|matches[password]');
-        $this->form_validation->set_rules('contact','Contact No','required|min_length[6]');
+        $this->form_validation->set_rules('contact','Contact No','required|min_length[11]');
         $this->form_validation->set_message('is_password_strong', 'Password is not strong');
         if($this->form_validation->run() === FALSE){
             //echo "form error";
@@ -362,8 +362,7 @@ public function myprofile()
     public function view_proposal($type_id,$id) //$id=post_id
     {
       $data['posts'] = $this->user_model->get_proposal($type_id,$id);// returns all post array of proposal
-    //  print_r($data['posts']);
-      //exit();
+
       $this->load->view('templates/accepted_proposal_customer_navbar_header');
       $this->load->view('users/viewproposal',$data);
       $this->load->view('templates/footer');
@@ -406,6 +405,8 @@ public function myprofile()
   public function mypost()
   {
     $data['posts'] = $this->post_model->get_posts();
+   // print_r($data['posts']);
+    //exit();
     $this->load->view('templates/navbar_customer_header');
     $this->load->view('posts/mypost', $data);
     $this->load->view('templates/navbar_customer_footer');

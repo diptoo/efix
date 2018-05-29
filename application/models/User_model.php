@@ -96,19 +96,11 @@ class User_model extends CI_Model
       WHERE pst.cust_id=$temp
       and pst.id = $id
       and pr.status=1
+      
       GROUP BY review.user_id
       ");
-
-      //  exit();
-       // $temp2 = $data[0]['proposed_id'];
-       // print_r($temp2);
-        //print_r($data[0]['id']);
-       // $query2= $this->db->query("select avg(rating) as avg from review where user_id=$temp2");
-       // $data2=$query2->result_array();
-       // $data[0]['avg'] = $data2[0]['avg'];
-       // print_r($data);
-       // return $data;
-        //exit();
+ //print_r($query->result_array());
+   //     exit();
     }
     elseif ($type_id==3) {
        // echo "dhukse";
@@ -130,8 +122,7 @@ pst.id as pst_id,users.type_id,definition,tech.username,cost,title,username,expe
       ");
     }
   //  echo "<pre>";
-// print_r($query->result_array());
-    //  exit();
+
     return $query->result_array();
     //exit();
   }
