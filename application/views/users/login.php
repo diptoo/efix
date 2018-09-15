@@ -672,8 +672,8 @@
     </div>
 
     <div class="chip w3-center">
-        <img src="http://localhost/efix/assets/images/rbt.jpg" alt="Person" width="96" height="96">
-        Rbt
+        <img src="http://localhost/efix/assets/images/rbt2.jpg" alt="Person" width="96" height="96">
+        Rizvi
     </div>
 </div>
 

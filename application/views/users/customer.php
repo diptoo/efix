@@ -1,9 +1,4 @@
-
-
-
-
-
-        <div class="col-sm-3">
+<div class="col-sm-3">
           <br>
           <div class="card" style="width: 18rem;">
             <img class="card-img-top img img-fluid" src="http://localhost/efix/assets/images/profilepic/<?php echo $post[0]['profilepic']; ?>" alt="Card image cap">

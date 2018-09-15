@@ -132,6 +132,19 @@
               </div>
                 <br> <br>
             </li>
+              <li class="nav-item">
+                  <div class="btn-group">
+                      <button type="button" class="btn btn-sm centered-text GugiFont" style="width:170px;">&nbsp;&nbsp;&nbsp;Services</button>
+                      <button type="button" class="btn  btn-sm dropdown-toggle dropdown-toggle-split GugiFont"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="sr-only">Toggle Dropdown</span>
+                      </button>
+                      <div class="dropdown-menu">
+                          <a class="dropdown-item GugiFont" href="<?php echo base_url();?>services/hardware">Hardware Services</a>
+                          <a class="dropdown-item GugiFont" href="<?php echo base_url(); ?>services/software">Software Services</a>
+                      </div>
+                  </div>
+                  <br> <br>
+              </li>
 
             <li class="nav-item">
               <div class="btn-group">
