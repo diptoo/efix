@@ -7,7 +7,8 @@
   function computePayment()
   {
      var amount = document.getElementById('amount').value;
-     var interest = (amount * 0.15).toFixed(0);
+     var service_charge=document.getElementById('servicecharge').value;
+     var interest = (amount * service_charge).toFixed(0);
      var payment = (+amount + +interest).toFixed(0);
      payment = payment.toString();
      interest = interest.toString();
@@ -36,6 +37,7 @@
 
   </div>
   <div class="col-sm-4 border-class3">
+
     <?php echo form_open('posts/push_proposal/'.$post['id']); ?>
     <div class="form-group">
         <label>Cost</label>
@@ -46,6 +48,7 @@
         <input type="text" class="form-control" name="days" placeholder="Days"/>
         <input type="hidden" name="pay" id="pay"/>
         <input type="hidden" name="inter" id="inter"/>
+        <input type="hidden" name="servicecharge" id="servicecharge" value="<?php echo $cost[0]['Amount']/100?>"/>
 
     </div>
     <div class="form-group">

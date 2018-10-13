@@ -25,4 +25,18 @@ class Services extends CI_Controller
         $this->load->view('services/hardware', $data);
         $this->load->view('templates/navbar_footer');
     }
+    public function shop_service_software($service_id)  //service id
+    {
+        $data['posts'] = $this->service_model->select_shop_service_software($service_id);
+        $this->load->view('templates/navbar_customer_header');
+        $this->load->view('services/shopservice', $data);
+        $this->load->view('templates/navbar_footer');
+    }
+    public function shop_service_hardware($service_id)  //service id
+    {
+        $data['posts'] = $this->service_model->select_shop_service_hardware($service_id);
+        $this->load->view('templates/navbar_customer_header');
+        $this->load->view('services/shopservice', $data);
+        $this->load->view('templates/navbar_footer');
+    }
 }

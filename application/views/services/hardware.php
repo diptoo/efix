@@ -13,7 +13,7 @@
             <tr class="table-active">
                 <td><?php echo $post['service_type'] ?></td>
                 <td>
-                    <?php   echo anchor("users/change_register_change/3/{$post['id']}", 'select', array('class' => 'badge badge-danger', 'onclick'=>"return confirm('Are you sure you want to select?')"));?>
+                    <?php   echo anchor("services/shop_service_hardware/{$post['id']}", 'select', array('class' => 'badge badge-danger', 'onclick'=>"return confirm('Are you sure you want to select?')"));?>
                 </td>
             </tr>
         <?php endforeach;?>

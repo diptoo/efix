@@ -33,21 +33,23 @@
   </div>
 
     <div class="row">
-        <div class="col-sm-2">
 
-        </div>
         <div class="col-sm-3">
             <a class="btn btn-primary" href="<?php echo base_url();?>payments/payment_shop">Payment(Shop)</a>
         </div>
-        <div class="col-sm-2">
 
-        </div>
-        <div class="col-sm-3">
+        <!-- <div class="col-sm-3">
             <a class="btn btn-warning" href="<?php echo base_url(); ?>payments/payment_tech">Payment(Technician)</a>
+        </div> -->
+         <div class="col-sm-3">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>admins/service_charge">Change Service Charge</a>
         </div>
-        <div class="col-sm-2">
 
-        </div>
+    </div>
+    <div class="row">
+      <!-- <div class="col-sm-3">
+          <a class="btn btn-info" href="<?php echo base_url(); ?>admins/service_charge">Change Service Charge</a>
+      </div> -->
     </div>
 
 </div>

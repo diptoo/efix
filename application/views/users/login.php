@@ -694,23 +694,16 @@
                         <a   class="btn btn-success" href="<?php echo base_url(); ?>users/register/1">Customer&nbsp;</a>
                     </div>
                     <div class="col-sm-4">
-                        <!--
-                                    <button type="button" data-target="#SignUpModal2" class="btn btn-danger" data-toggle="modal">Shop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                                  -->
                         <a  class="btn btn-danger" href="<?php echo base_url(); ?>users/register/2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Shop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
                     </div>
                     <div class="col-sm-4">
-                        <!--
-            <button type="button" href="<?php echo base_url(); ?>users/register/3"  data-target="#SignUpModal3" class="btn btn-warning" data-toggle="modal">Technician</button>
-          -->
+
                         <a  class="btn btn-warning" href="<?php echo base_url(); ?>users/register/3">Technician</a>
                     </div>
                 </div>
             </div>
-            <!--  <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-             </div> -->
+
         </div>
     </div>
 </div>

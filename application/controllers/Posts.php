@@ -14,6 +14,7 @@ class Posts extends CI_Controller
         $this->load->model('user_model');
         $this->load->model('post_model');
         $this->load->model('rating_model');
+        $this->load->model('payment_model');
     }
 
 // For all post retrieve
@@ -131,8 +132,7 @@ class Posts extends CI_Controller
     public function proposal($slug)
     {
         $data['post'] = $this->post_model->get_posts_slug($slug);
-        //print_r($data['post']);
-       // exit();
+        $data['cost']= $this->payment_model->service_charge();
         if (empty($data['post'])) {
             show_404();
         }
